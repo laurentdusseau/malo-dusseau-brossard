@@ -2124,7 +2124,9 @@ select {
   transition: background 0.25s var(--ease);
 }
 
-a.partners-cr7__cell:hover {
+a.partners-cr7__cell:hover,
+a.partners-cr7__cell:active,
+a.partners-cr7__cell.is-lit {
   background: #0a0a0a;
 }
 
@@ -2134,7 +2136,9 @@ a.partners-cr7__cell:focus-visible {
   z-index: 3;
 }
 
-.partners-cr7__cell:hover {
+.partners-cr7__cell:hover,
+.partners-cr7__cell:active,
+.partners-cr7__cell.is-lit {
   background: #0a0a0a;
 }
 
@@ -2161,7 +2165,9 @@ a.partners-cr7__cell:focus-visible {
   background: #fff;
 }
 
-.partners-cr7__cell:hover img {
+.partners-cr7__cell:hover img,
+.partners-cr7__cell:active img,
+.partners-cr7__cell.is-lit img {
   opacity: 1;
   transform: scale(1.08);
 }
@@ -2181,12 +2187,16 @@ a.partners-cr7__cell:focus-visible {
   opacity: 0.9;
 }
 
-.partners-cr7__cell:hover .partners-cr7__wordmark {
+.partners-cr7__cell:hover .partners-cr7__wordmark,
+.partners-cr7__cell:active .partners-cr7__wordmark,
+.partners-cr7__cell.is-lit .partners-cr7__wordmark {
   opacity: 1;
   transform: scale(1.08);
 }
 
-.partners-cr7__cell--cta:hover .partners-cr7__wordmark {
+.partners-cr7__cell--cta:hover .partners-cr7__wordmark,
+.partners-cr7__cell--cta:active .partners-cr7__wordmark,
+.partners-cr7__cell--cta.is-lit .partners-cr7__wordmark {
   color: #fff;
 }
 

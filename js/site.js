@@ -488,4 +488,44 @@
     requestAnimationFrame(bootValence);
     window.addEventListener("load", bootValence, { once: true });
   }
+
+  /* Partenaires — survol tactile (doigt qui glisse) = même lumière / zoom qu’au hover desktop */
+  const partnersGrid = document.querySelector(".partners-cr7__grid");
+  if (partnersGrid) {
+    let litCell = null;
+    const clearLit = () => {
+      if (litCell) {
+        litCell.classList.remove("is-lit");
+        litCell = null;
+      }
+    };
+    const litFromPoint = (x, y) => {
+      const el = document.elementFromPoint(x, y);
+      const cell = el?.closest?.(".partners-cr7__cell:not(.partners-cr7__cell--empty)");
+      if (cell === litCell) return;
+      clearLit();
+      if (cell && partnersGrid.contains(cell)) {
+        cell.classList.add("is-lit");
+        litCell = cell;
+      }
+    };
+    partnersGrid.addEventListener(
+      "touchstart",
+      (e) => {
+        const t = e.touches[0];
+        if (t) litFromPoint(t.clientX, t.clientY);
+      },
+      { passive: true }
+    );
+    partnersGrid.addEventListener(
+      "touchmove",
+      (e) => {
+        const t = e.touches[0];
+        if (t) litFromPoint(t.clientX, t.clientY);
+      },
+      { passive: true }
+    );
+    partnersGrid.addEventListener("touchend", clearLit, { passive: true });
+    partnersGrid.addEventListener("touchcancel", clearLit, { passive: true });
+  }
 })();
