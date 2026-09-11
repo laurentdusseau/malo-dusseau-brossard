@@ -273,6 +273,23 @@ select {
   overflow: hidden;
 }
 
+.hl-strip__head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+  padding-top: 0.15rem;
+  pointer-events: none;
+}
+
+.hl-strip__head .media-block__title {
+  margin: 0;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
+}
+
 .hl-strip__stage {
   position: relative;
   max-width: 100%;
@@ -379,10 +396,10 @@ select {
   opacity: 0;
 }
 
-/* Vidéo verticale — bloc vidéo+texte groupé au centre (pas de trou noir) */
+/* Vidéo verticale — bloc vidéo+texte collé en haut (aligné avec le titre Highlights) */
 .hl-card--portrait {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: #000;
 }
@@ -478,7 +495,7 @@ select {
   max-height: none;
   aspect-ratio: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background: #000;
 }
@@ -948,11 +965,6 @@ select {
 
 .section.section--medias {
   padding: 0 0 3.5rem;
-}
-
-.section--medias .media-block__head {
-  margin-bottom: 0.35rem;
-  padding-top: 0.15rem;
 }
 
 .section--medias .hl-strip {
