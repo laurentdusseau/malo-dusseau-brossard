@@ -460,7 +460,7 @@ select {
   text-shadow: none;
 }
 
-/* Valence — 50% vidéo | 50% podium en fond sous le texte */
+/* Valence — vidéo contain 9:16 (inchangée) | podium très transparent à droite */
 .hl-card--valence .hl-card__stage {
   width: 100%;
   max-width: 100%;
@@ -477,11 +477,22 @@ select {
   height: 100%;
   max-height: none;
   aspect-ratio: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
 }
 
+/* Ne pas cropper / zoomer la vidéo — même rendu qu’avant le podium */
 .hl-card--valence .hl-card__media video,
 .hl-card--valence .hl-card__media .hl-card__poster {
-  object-fit: cover;
+  position: relative;
+  inset: auto;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
   object-position: center center;
 }
 
@@ -497,6 +508,7 @@ select {
   box-sizing: border-box;
   overflow: hidden;
   text-align: left;
+  background: #000;
 }
 
 .hl-card--valence .hl-card__label-bg {
@@ -508,6 +520,7 @@ select {
   object-position: center 20%;
   z-index: 0;
   pointer-events: none;
+  opacity: 0.18;
 }
 
 .hl-card--valence .hl-card__label-shade {
@@ -516,8 +529,8 @@ select {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.45) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.6) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .hl-card--valence .hl-card__label-copy {
@@ -528,7 +541,7 @@ select {
 
 .hl-card--valence .hl-card__eyebrow,
 .hl-card--valence .hl-card__title {
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85), 0 0 2px rgba(0, 0, 0, 0.95);
 }
 
 @media (max-width: 768px) {
@@ -567,6 +580,12 @@ select {
     width: 100%;
     height: auto;
     min-height: 0;
+  }
+
+  .hl-card--valence .hl-card__media video,
+  .hl-card--valence .hl-card__media .hl-card__poster {
+    height: min(58vh, 26rem);
+    width: auto;
   }
 
   .hl-card--valence .hl-card__label {
