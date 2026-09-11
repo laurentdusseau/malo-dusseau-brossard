@@ -30,9 +30,20 @@
     });
   }
 
-  const sections = ["accueil", "medias", "palmares", "partenaires", "apropos", "contact"]
+  const sections = [
+    "accueil",
+    "medias",
+    "palmares",
+    "partenaires",
+    "apropos",
+    "contact",
+    "objectif",
+    "pourquoi-malo",
+    "besoins",
+    "packs",
+  ]
     .map((id) => document.getElementById(id))
-    .filter(Boolean);
+    .filter((el) => el && !el.classList.contains("dp-hero__pin"));
 
   const setActive = (id) => {
     navLinks.forEach((a) => {
@@ -77,8 +88,8 @@
       "assets/medias/2026_valence_4.jpeg",
       "assets/medias/2026_valence_5.jpeg",
       "assets/medias/2026_valence_6.jpg",
-      "assets/medias/2026_valence_7.png",
-      "assets/medias/2026_valence_8.png",
+      "assets/medias/2026_valence_7.jpg",
+      "assets/medias/2026_valence_8.jpg",
     ],
     area47: [
       "assets/medias/2026_area47_1.jpg",
@@ -86,27 +97,29 @@
     ],
     entrainement: [
       "assets/medias/entrainement_1.jpg",
-      "assets/medias/entrainement_2.png",
-      "assets/medias/entrainement_3.png",
+      "assets/medias/entrainement_2.jpg",
+      "assets/medias/entrainement_3.jpg",
       "assets/medias/entrainement_4.jpg",
     ],
     loureira: [
-      "assets/medias/2025_loureira_1.png",
+      "assets/medias/2025_loureira_1.jpg",
       "assets/medias/2025_loureira_2.jpeg",
       "assets/medias/2025_loureira_3.jpeg",
-      "assets/medias/2025_loureira_6.png",
+      "assets/medias/2025_loureira_6.jpg",
     ],
     monthey: [
-      "assets/medias/2025_monthey_1.png",
-      "assets/medias/2025_monthey_2.png",
-      "assets/medias/2025_monthey_3.png",
+      "assets/medias/2025_monthey_1.jpg",
+      "assets/medias/2025_monthey_2.jpg",
+      "assets/medias/2025_monthey_3.jpg",
     ],
     saintgalmier: ["assets/medias/2024_saintgalmier_1.jpg"],
     bouxwiller: [
-      "assets/medias/2024_bouxwiller_1.png",
-      "assets/medias/2024_bouxwiller_2.png",
+      "assets/medias/2025_bouxwiller_1.jpg",
+      "assets/medias/2025_bouxwiller_2.jpg",
     ],
   };
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const lightbox = document.querySelector(".lightbox");
   const lightboxImg = lightbox?.querySelector("img");
@@ -116,6 +129,8 @@
   const lightboxCounter = lightbox?.querySelector(".lightbox__counter");
   let galleryItems = [];
   let galleryIndex = 0;
+  let galleryCaption = "";
+  let lightboxLastFocus = null;
 
   const galleryUrl = (src) => {
     if (!src) return "";
@@ -132,12 +147,22 @@
     else el.removeAttribute("hidden");
   };
 
+  const lightboxFocusables = () => {
+    if (!lightbox) return [];
+    return Array.from(
+      lightbox.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])")
+    ).filter((el) => !el.hasAttribute("hidden") && !el.disabled);
+  };
+
   const showGalleryAt = (index) => {
     if (!lightbox || !lightboxImg || !galleryItems.length) return;
     galleryIndex =
       ((index % galleryItems.length) + galleryItems.length) % galleryItems.length;
+    lightboxImg.hidden = false;
     lightboxImg.src = galleryUrl(galleryItems[galleryIndex]);
-    lightboxImg.alt = `Photo ${galleryIndex + 1} / ${galleryItems.length}`;
+    lightboxImg.alt = galleryCaption
+      ? `${galleryCaption} (${galleryIndex + 1} / ${galleryItems.length})`
+      : `Photo ${galleryIndex + 1} / ${galleryItems.length}`;
     if (lightboxCounter) {
       if (galleryItems.length > 1) {
         lightboxCounter.hidden = false;
@@ -152,15 +177,23 @@
     lightboxImg.style.cursor = multi ? "pointer" : "default";
   };
 
-  const openEventGallery = (eventKey) => {
+  const openLightbox = (trigger) => {
+    if (!lightbox || !lightboxImg) return;
+    lightboxLastFocus = trigger || document.activeElement;
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    showGalleryAt(galleryIndex);
+    (lightboxClose || lightbox).focus();
+  };
+
+  const openEventGallery = (eventKey, trigger) => {
     const list = EVENT_GALLERIES[eventKey];
     if (!list?.length || !lightbox || !lightboxImg) return;
     galleryItems = list.slice();
     galleryIndex = 0;
-    /* Ouvrir d’abord l’overlay (sinon gros JPEG = impression que le clic ne marche pas) */
-    lightbox.classList.add("is-open");
-    document.body.style.overflow = "hidden";
-    showGalleryAt(0);
+    galleryCaption = trigger?.querySelector("img")?.getAttribute("alt") || "";
+    openLightbox(trigger);
   };
 
   const galleryRoot = document.querySelector(".gallery");
@@ -180,8 +213,7 @@
       e.preventDefault();
       e.stopPropagation();
       const eventKey = el.getAttribute("data-gallery");
-      /* Laisser finir le click souris/tactile avant d’afficher l’overlay */
-      window.setTimeout(() => openEventGallery(eventKey), 0);
+      window.setTimeout(() => openEventGallery(eventKey, el), 0);
     });
   }
 
@@ -191,17 +223,27 @@
       const src = el.getAttribute("data-lightbox") || el.querySelector("img")?.src;
       if (!src || !lightbox || !lightboxImg) return;
       galleryItems = [src];
-      showGalleryAt(0);
-      lightbox.classList.add("is-open");
-      document.body.style.overflow = "hidden";
+      galleryIndex = 0;
+      galleryCaption = el.querySelector("img")?.getAttribute("alt") || "";
+      openLightbox(el);
     });
   });
 
   const closeLightbox = () => {
     if (!lightbox) return;
     lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     galleryItems = [];
+    galleryCaption = "";
+    if (lightboxImg) {
+      lightboxImg.removeAttribute("src");
+      lightboxImg.alt = "";
+      lightboxImg.hidden = true;
+    }
+    const back = lightboxLastFocus;
+    lightboxLastFocus = null;
+    if (back && typeof back.focus === "function") back.focus();
   };
   lightboxClose?.addEventListener("click", closeLightbox);
   lightboxPrev?.addEventListener("click", (e) => {
@@ -221,13 +263,31 @@
   });
   document.addEventListener("keydown", (e) => {
     if (!lightbox?.classList.contains("is-open")) return;
-    if (e.key === "Escape") closeLightbox();
+    if (e.key === "Escape") {
+      closeLightbox();
+      return;
+    }
     if (e.key === "ArrowLeft") showGalleryAt(galleryIndex - 1);
     if (e.key === "ArrowRight") showGalleryAt(galleryIndex + 1);
+    if (e.key === "Tab") {
+      const nodes = lightboxFocusables();
+      if (!nodes.length) return;
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   const reveals = document.querySelectorAll(".reveal");
-  if (reveals.length && "IntersectionObserver" in window) {
+  if (reduceMotion) {
+    reveals.forEach((el) => el.classList.add("is-in"));
+  } else if (reveals.length && "IntersectionObserver" in window) {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -247,8 +307,6 @@
   const t = (key, fallback) =>
     (window.MaloI18n && window.MaloI18n.t(key)) || fallback;
 
-  const CONTACT_TO = "laurentdusseau@gmail.com";
-
   const sendViaPhp = async (payload) => {
     const res = await fetch("contact.php", {
       method: "POST",
@@ -256,28 +314,12 @@
       body: JSON.stringify(payload),
     });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok || !data.ok) throw new Error(data.error || "php");
-    return true;
-  };
-
-  const sendViaFormSubmit = async (payload) => {
-    const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_TO}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        name: payload.name,
-        email: payload.email,
-        type: payload.type,
-        message: payload.message,
-        _subject: `MDB site — Contact : ${payload.type || "Message"}`,
-        _template: "table",
-        _captcha: "false",
-      }),
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || data.success === "false" || data.success === false) {
-      throw new Error(data.message || "formsubmit");
+    if (res.status === 429 || data.error === "rate") {
+      const err = new Error("rate");
+      err.code = "rate";
+      throw err;
     }
+    if (!res.ok || !data.ok) throw new Error(data.error || "php");
     return true;
   };
 
@@ -329,11 +371,7 @@
       }
 
       try {
-        try {
-          await sendViaPhp(payload);
-        } catch (_) {
-          await sendViaFormSubmit(payload);
-        }
+        await sendViaPhp(payload);
         form.reset();
         if (msg) {
           msg.style.color = "var(--pink)";
@@ -342,13 +380,19 @@
             "Message envoyé — merci, on vous répond vite."
           );
         }
-      } catch (_) {
+      } catch (err) {
         if (msg) {
           msg.style.color = "var(--pink)";
-          msg.textContent = t(
-            "contact.form.error",
-            "Envoi impossible pour le moment. Réessayez ou appelez le 06 51 11 02 01."
-          );
+          const rate = err && err.code === "rate";
+          msg.textContent = rate
+            ? t(
+                "contact.form.rate",
+                "Trop de messages. Réessayez dans quelques minutes ou appelez le 06 51 11 02 01."
+              )
+            : t(
+                "contact.form.error",
+                "Envoi impossible pour le moment. Réessayez ou appelez le 06 51 11 02 01."
+              );
         }
       } finally {
         if (btn) btn.disabled = false;
@@ -371,9 +415,8 @@
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "hl-strip__dot" + (i === 0 ? " is-active" : "");
-      btn.setAttribute("role", "tab");
       btn.setAttribute("aria-label", `Highlight ${i + 1}`);
-      btn.setAttribute("aria-selected", i === 0 ? "true" : "false");
+      btn.setAttribute("aria-current", i === 0 ? "true" : "false");
       btn.addEventListener("click", () => goTo(i, true));
       dotsWrap.appendChild(btn);
       return btn;
@@ -427,7 +470,7 @@
       dots.forEach((dot, i) => {
         const on = i === activeIndex;
         dot.classList.toggle("is-active", on);
-        dot.setAttribute("aria-selected", on ? "true" : "false");
+        dot.setAttribute("aria-current", on ? "true" : "false");
       });
       if (prevBtn) prevBtn.disabled = activeIndex === 0;
       if (nextBtn) nextBtn.disabled = activeIndex === cards.length - 1;
@@ -533,4 +576,34 @@
     partnersGrid.addEventListener("touchend", clearLit, { passive: true });
     partnersGrid.addEventListener("touchcancel", clearLit, { passive: true });
   }
+
+  const closeMaillotHints = (keep) => {
+    document.querySelectorAll(".dp-maillot-hint.is-open").forEach((wrap) => {
+      if (wrap === keep) return;
+      wrap.classList.remove("is-open");
+      const b = wrap.querySelector(".dp-maillot-hint__btn");
+      if (b) b.setAttribute("aria-expanded", "false");
+    });
+  };
+
+  document.querySelectorAll(".dp-maillot-hint").forEach((wrap) => {
+    const btn = wrap.querySelector(".dp-maillot-hint__btn");
+    if (!btn) return;
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const open = !wrap.classList.contains("is-open");
+      closeMaillotHints(open ? wrap : null);
+      wrap.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dp-maillot-hint")) closeMaillotHints();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMaillotHints();
+  });
 })();

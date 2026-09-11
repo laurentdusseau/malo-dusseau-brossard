@@ -18,6 +18,78 @@
       "nav.media": "Médias",
       "nav.partners": "Partenaires",
       "nav.contact": "Contact",
+      "nav.goal": "Objectif",
+      "nav.why": "Pourquoi Malo",
+      "nav.needs": "Besoins",
+      "nav.packs": "Packs partenaires",
+      "dp.meta.title": "Devenir partenaire — Malo Dusseau Brossard",
+      "dp.kicker": "En route vers le maillot arc en ciel…",
+      "dp.title": "Objectif : Champion du monde",
+      "dp.lead":
+        "Une trajectoire claire — du premier mondial UCI en 2025, jusqu’à l’échéance historique à domicile en 2027 en passant par Pékin.",
+      "dp.mile.past": "Passé",
+      "dp.mile.next": "Prochaine étape",
+      "dp.mile.soon": "À venir",
+      "dp.mile.pekin": "Pékin",
+      "dp.mile.monthey.meta": "Suisse — sept. 2025",
+      "dp.mile.pekin.meta": "Chine — oct. 2026",
+      "dp.mile.savoie.meta": "France — 2027",
+      "dp.miser.title": "Miser<br />sur<br />Malo",
+      "dp.miser.c1.t": "Jeune déjà au sommet",
+      "dp.miser.c1.p":
+        "{age} ans, double champion de France, double vainqueur de manches qualificatives Monde Elite. Un talent français qui a de l’avenir — Pékin 2026, puis les Mondiaux 2027 à la maison.",
+      "dp.miser.c2.t": "Un champion accessible",
+      "dp.miser.c2.p":
+        "Stages avec les plus jeunes, messages auxquels il répond, photos. Un haut niveau que les familles peuvent vraiment rencontrer — pas un sportif injoignable.",
+      "dp.miser.c3.t": "Une visibilité qui grandit",
+      "dp.miser.c3.p":
+        "Présent dans le Pumptrack, et au-delà. YouTube, Instagram : une communauté qui s’élargit, des vlogs, un partenariat qui se voit vraiment.",
+      "dp.miser.c4.t": "Un cap net",
+      "dp.miser.c4.p":
+        "Il sait où il va. Pékin, puis France 2027 : un projet carré, une tête claire — pas une envie floue.",
+      "dp.need.title": "Les besoins de Malo",
+      "dp.need.lead":
+        "Un accompagnement concret pour viser Pékin 2026, puis les Mondiaux en France en 2027",
+      "dp.need.col1": "Pékin · Haute-Savoie",
+      "dp.need.flights": "Vols et déplacements incluant les qualifications",
+      "dp.need.stay": "Hébergement",
+      "dp.need.food": "Restauration",
+      "dp.need.col2": "Équipements",
+      "dp.need.wheels": "Roues carbones et moyeux",
+      "dp.need.helmet": "Casque",
+      "dp.need.kit": "Protections et tenues",
+      "dp.need.timing": "Cellules chronométriques",
+      "dp.need.parts": "Autres pièces vélos",
+      "dp.need.col3": "Entraînements",
+      "dp.need.camps": "2 stages en amont en Haute-Savoie",
+      "dp.need.ffc": "Stage FFC",
+      "dp.need.coach": "Coaching personnalisé (K. Da Encarnacion)",
+      "dp.need.mental": "Coaching mental",
+      "dp.need.physio": "Préparation physique (musculation, récupération, cryothérapie)",
+      "dp.need.total": "Total",
+      "dp.need.sum": "Budget nécessaire 26/27",
+      "dp.pack.title": "Contreparties — Packs partenaires",
+      "dp.pack.bronze.s1": "2 stories + 1 post mentionnant la marque",
+      "dp.pack.bronze.s2": "Remerciements Instagram",
+      "dp.pack.bronze.s3": "Mur partenaires digital (réseaux et sites)",
+      "dp.pack.bronze.s4": "Reporting compétition + reporting taux d’engagement réseaux",
+      "dp.pack.opt": "En option selon besoin",
+      "dp.pack.promo": "Code promo / lien réduction",
+      "dp.pack.inc.bronze": "Tout bronze",
+      "dp.pack.argent.logo": "Logo maillot (épaule/côté) ou équipement",
+      "dp.pack.argent.content": "Un contenu dédié marque (unboxing ou bloc sponsor vidéo longue)",
+      "dp.pack.argent.s": "5 stories + 1 post mentionnant la marque",
+      "dp.pack.argent.photos": "Photos courses",
+      "dp.pack.inc.argent": "Tout argent",
+      "dp.pack.or.logo": "Logo maillot (devant ou dos)",
+      "dp.pack.or.immerse":
+        "Immersion : stage pumptrack, activation locale ou chez le partenaire (~10 personnes, ½ journée)",
+      "dp.pack.or.s": "10 stories + 4 vidéos mentionnant la marque",
+      "dp.pack.or.report": "Reporting dédié saison (Pékin + saison)",
+      "dp.pack.note": "Packs adaptables à vos objectifs",
+      "dp.pack.legal":
+        "Association MALO PUMPTRACK BMX (loi 1901) — N° W332036470 · Facture (sociétés) / reçu d’asso (particuliers)",
+      "dp.pack.hint": "Voir le plan des emplacements logo sur le maillot",
       "hero.tag": "Pilote français · Pumptrack Elite",
       "hl.cf": "Championnat de France",
       "hl.qualifier": "Qualifier Monde Elite",
@@ -27,14 +99,14 @@
       "about.k.category": "Catégorie",
       "about.k.age": "Âge",
       "about.k.based": "Basé",
-      "about.v.age": "10.11.2008 · 17 ans",
+      "about.v.age": "10.11.2008 · {age} ans",
       "about.v.based": "Pessac – Bordeaux (33)",
       "about.p1":
         "Originaire de Pessac, près de Bordeaux, je pratique le BMX depuis treize ans (Stade Bordelais) avant de me concentrer pleinement au pumptrack depuis 2 ans.",
       "about.p2":
         "Titulaire d’un bac pro chaudronnerie, j’ai su concilier études et sport de haut niveau en passant notamment par le CREPS de Bordeaux.",
       "about.p3":
-        "À 17 ans, je fais partie des meilleurs pilotes Elites de pumptrack au monde.",
+        "À {age} ans, je fais partie des meilleurs pilotes Elites de pumptrack au monde.",
       "results.eyebrow": "Résultats",
       "results.title": "Palmarès",
       "results.h1": "2× Vainqueur Qualifier Monde Elite",
@@ -90,6 +162,7 @@
       "contact.send": "Envoyer",
       "contact.form.ok": "Message envoyé — merci, on vous répond vite.",
       "contact.form.error": "Envoi impossible pour le moment. Réessayez ou appelez le 06 51 11 02 01.",
+      "contact.form.rate": "Trop de messages. Réessayez dans quelques minutes ou appelez le 06 51 11 02 01.",
       "contact.form.sending": "Envoi en cours…",
       "contact.partnerships": "Partenariats",
       "contact.asso":
@@ -114,6 +187,78 @@
       "nav.media": "Media",
       "nav.partners": "Partners",
       "nav.contact": "Contact",
+      "nav.goal": "Goal",
+      "nav.why": "Why Malo",
+      "nav.needs": "Needs",
+      "nav.packs": "Partner packs",
+      "dp.meta.title": "Become a partner — Malo Dusseau Brossard",
+      "dp.kicker": "On the road to the rainbow jersey…",
+      "dp.title": "Goal: World champion",
+      "dp.lead":
+        "A clear path — from the first UCI Worlds in 2025, through Beijing, to the historic home event in 2027.",
+      "dp.mile.past": "Past",
+      "dp.mile.next": "Next stop",
+      "dp.mile.soon": "Upcoming",
+      "dp.mile.pekin": "Beijing",
+      "dp.mile.monthey.meta": "Switzerland — Sept. 2025",
+      "dp.mile.pekin.meta": "China — Oct. 2026",
+      "dp.mile.savoie.meta": "France — 2027",
+      "dp.miser.title": "Bet<br />on<br />Malo",
+      "dp.miser.c1.t": "Already at the top",
+      "dp.miser.c1.p":
+        "{age} years old, two-time French champion, two-time World Elite qualifier winner. A French talent with a future — Beijing 2026, then the 2027 Worlds at home.",
+      "dp.miser.c2.t": "A champion you can meet",
+      "dp.miser.c2.p":
+        "Camps with the youngest riders, messages he answers, photos. Elite level that families can actually meet — not an unreachable athlete.",
+      "dp.miser.c3.t": "Growing visibility",
+      "dp.miser.c3.p":
+        "In pumptrack, and beyond. YouTube, Instagram: a growing community, vlogs, a partnership you actually see.",
+      "dp.miser.c4.t": "A clear heading",
+      "dp.miser.c4.p":
+        "He knows where he’s going. Beijing, then France 2027: a square project, a clear head — not a vague wish.",
+      "dp.need.title": "What Malo needs",
+      "dp.need.lead":
+        "Concrete support to aim for Beijing 2026, then the Worlds in France in 2027",
+      "dp.need.col1": "Beijing · Haute-Savoie",
+      "dp.need.flights": "Flights and travel including qualifiers",
+      "dp.need.stay": "Accommodation",
+      "dp.need.food": "Meals",
+      "dp.need.col2": "Equipment",
+      "dp.need.wheels": "Carbon wheels and hubs",
+      "dp.need.helmet": "Helmet",
+      "dp.need.kit": "Protection and kit",
+      "dp.need.timing": "Timing cells",
+      "dp.need.parts": "Other bike parts",
+      "dp.need.col3": "Training",
+      "dp.need.camps": "2 prep camps in Haute-Savoie",
+      "dp.need.ffc": "FFC camp",
+      "dp.need.coach": "Personal coaching (K. Da Encarnacion)",
+      "dp.need.mental": "Mental coaching",
+      "dp.need.physio": "Physical prep (strength, recovery, cryotherapy)",
+      "dp.need.total": "Total",
+      "dp.need.sum": "Budget needed 26/27",
+      "dp.pack.title": "Benefits — Partner packs",
+      "dp.pack.bronze.s1": "2 stories + 1 post mentioning the brand",
+      "dp.pack.bronze.s2": "Instagram thanks",
+      "dp.pack.bronze.s3": "Digital partners wall (socials and websites)",
+      "dp.pack.bronze.s4": "Race reporting + social engagement report",
+      "dp.pack.opt": "Optional as needed",
+      "dp.pack.promo": "Promo code / discount link",
+      "dp.pack.inc.bronze": "All bronze",
+      "dp.pack.argent.logo": "Jersey logo (shoulder/side) or equipment",
+      "dp.pack.argent.content": "Dedicated brand content (unboxing or long-form sponsor block)",
+      "dp.pack.argent.s": "5 stories + 1 post mentioning the brand",
+      "dp.pack.argent.photos": "Race photos",
+      "dp.pack.inc.argent": "All silver",
+      "dp.pack.or.logo": "Jersey logo (front or back)",
+      "dp.pack.or.immerse":
+        "Immersion: pumptrack camp, local activation or at the partner (~10 people, half day)",
+      "dp.pack.or.s": "10 stories + 4 videos mentioning the brand",
+      "dp.pack.or.report": "Dedicated season report (Beijing + season)",
+      "dp.pack.note": "Packs tailored to your goals",
+      "dp.pack.legal":
+        "MALO PUMPTRACK BMX association (law 1901) — No. W332036470 · Invoice (companies) / association receipt (individuals)",
+      "dp.pack.hint": "See jersey logo placement map",
       "hero.tag": "French rider · Pumptrack Elite",
       "hl.cf": "French Championships",
       "hl.qualifier": "World Elite Qualifier",
@@ -123,14 +268,14 @@
       "about.k.category": "Category",
       "about.k.age": "Age",
       "about.k.based": "Based",
-      "about.v.age": "10.11.2008 · 17 yrs",
+      "about.v.age": "10.11.2008 · {age} yrs",
       "about.v.based": "Pessac – Bordeaux (33)",
       "about.p1":
         "From Pessac, near Bordeaux, I’ve ridden BMX for thirteen years (Stade Bordelais) before focusing fully on pumptrack for the past 2 years.",
       "about.p2":
         "With a vocational baccalaureate in boilermaking, I’ve balanced studies and elite sport — including time at the CREPS in Bordeaux.",
       "about.p3":
-        "At 17, I’m among the world’s best Elite pumptrack riders.",
+        "At {age}, I’m among the world’s best Elite pumptrack riders.",
       "results.eyebrow": "Results",
       "results.title": "Honours",
       "results.h1": "2× World Elite Qualifier winner",
@@ -186,6 +331,7 @@
       "contact.send": "Send",
       "contact.form.ok": "Message sent — thanks, we’ll get back to you soon.",
       "contact.form.error": "Could not send right now. Please try again or call +33 6 51 11 02 01.",
+      "contact.form.rate": "Too many messages. Try again in a few minutes or call +33 6 51 11 02 01.",
       "contact.form.sending": "Sending…",
       "contact.partnerships": "Partnerships",
       "contact.asso":
@@ -226,6 +372,28 @@
     } catch (_) {}
   }
 
+  const BIRTH = { y: 2008, m: 11, d: 10 };
+
+  function computeAge() {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Paris",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(new Date());
+    const num = (type) => Number(parts.find((p) => p.type === type)?.value);
+    const y = num("year");
+    const m = num("month");
+    const d = num("day");
+    let age = y - BIRTH.y;
+    if (m < BIRTH.m || (m === BIRTH.m && d < BIRTH.d)) age -= 1;
+    return Math.max(0, age);
+  }
+
+  function fillAge(value) {
+    return String(value).replaceAll("{age}", String(computeAge()));
+  }
+
   function applyLang(lang) {
     if (!dict[lang]) lang = "fr";
     document.documentElement.lang = lang;
@@ -237,15 +405,21 @@
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (!key || pack[key] == null) return;
-      el.textContent = pack[key];
+      el.textContent = fillAge(pack[key]);
     });
     document.querySelectorAll("[data-i18n-html]").forEach((el) => {
       const key = el.getAttribute("data-i18n-html");
       if (!key || pack[key] == null) return;
-      el.innerHTML = pack[key];
+      el.innerHTML = fillAge(pack[key]);
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-aria");
+      if (!key || pack[key] == null) return;
+      el.setAttribute("aria-label", fillAge(pack[key]));
     });
 
-    const title = pack["meta.title"];
+    const isPartner = document.body.classList.contains("page-partner");
+    const title = isPartner ? pack["dp.meta.title"] : pack["meta.title"];
     const desc = pack["meta.desc"];
     const ogTitle = pack["meta.ogTitle"] || title;
     const ogDesc = pack["meta.ogDesc"] || desc;
@@ -261,6 +435,10 @@
       btn.classList.toggle("is-active", btn.getAttribute("data-lang") === lang);
     });
 
+    document.querySelectorAll("[data-home]").forEach((a) => {
+      a.setAttribute("href", "index.html?lang=" + lang);
+    });
+
     syncUrlLang(lang);
     window.__maloLang = lang;
     window.dispatchEvent(new CustomEvent("malo:lang", { detail: { lang } }));
@@ -273,9 +451,9 @@
     const opts = {
       folder: "svg",
       ext: ".svg",
-      base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
+      base: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/",
     };
-    ["palmares", "medias"].forEach((id) => {
+    ["palmares", "medias", "objectif"].forEach((id) => {
       const root = document.getElementById(id);
       if (root) twemoji.parse(root, opts);
     });
@@ -290,7 +468,12 @@
     applyLang(detectLang());
   }
 
-  window.MaloI18n = { applyLang, detectLang, t: (key) => (dict[window.__maloLang || "fr"] || dict.fr)[key] };
+  window.MaloI18n = {
+    applyLang,
+    detectLang,
+    computeAge,
+    t: (key) => fillAge((dict[window.__maloLang || "fr"] || dict.fr)[key] ?? ""),
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
