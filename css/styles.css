@@ -426,21 +426,6 @@ select {
   z-index: 0;
 }
 
-/* Valence uniquement — zoom ×2 (recadré au centre) */
-.hl-card--portrait .hl-card__media--zoom2 {
-  overflow: hidden;
-}
-
-.hl-card--portrait .hl-card__media--zoom2 video,
-.hl-card--portrait .hl-card__media--zoom2 .hl-card__poster,
-.hl-card--portrait:not(.is-active) .hl-card__media--zoom2 video,
-.hl-card--portrait:not(.is-active) .hl-card__media--zoom2 .hl-card__poster {
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(2);
-  transform-origin: center center;
-}
-
 .hl-card--portrait:not(.is-active) .hl-card__media video,
 .hl-card--portrait:not(.is-active) .hl-card__media .hl-card__poster {
   transform: none;
