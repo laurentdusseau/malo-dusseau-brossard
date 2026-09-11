@@ -460,6 +460,77 @@ select {
   text-shadow: none;
 }
 
+/* Valence — 50% vidéo | 50% podium en fond sous le texte */
+.hl-card--valence .hl-card__stage {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  gap: 0;
+  padding-inline: 0;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.hl-card--valence .hl-card__media {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+}
+
+.hl-card--valence .hl-card__media video,
+.hl-card--valence .hl-card__media .hl-card__poster {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hl-card--valence .hl-card__label {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(1.25rem, 3vw, 2.75rem);
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: left;
+}
+
+.hl-card--valence .hl-card__label-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hl-card--valence .hl-card__label-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.45) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.hl-card--valence .hl-card__label-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 22rem;
+}
+
+.hl-card--valence .hl-card__eyebrow,
+.hl-card--valence .hl-card__title {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
 @media (max-width: 768px) {
   .hl-card--portrait .hl-card__stage {
     flex-direction: column;
@@ -482,6 +553,34 @@ select {
 
   .hl-card--portrait .hl-card__title {
     white-space: normal;
+  }
+
+  .hl-card--valence .hl-card__stage {
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 0;
+    padding: 0;
+  }
+
+  .hl-card--valence .hl-card__media {
+    flex: 1 1 58%;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .hl-card--valence .hl-card__label {
+    flex: 0 0 42%;
+    width: 100%;
+    height: auto;
+    min-height: 9.5rem;
+    justify-content: center;
+    text-align: center;
+    padding: 1.25rem 1rem;
+  }
+
+  .hl-card--valence .hl-card__label-copy {
+    max-width: none;
   }
 }
 
