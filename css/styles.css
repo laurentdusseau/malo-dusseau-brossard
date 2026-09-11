@@ -460,21 +460,24 @@ select {
   text-shadow: none;
 }
 
-/* Valence — vidéo 9:16 non écrasée, bord gauche = H de Highlights | podium agrandi */
+/* Valence — vidéo inchangée (alignée H) | photo à partir de 50% largeur */
 .hl-card--valence .hl-card__stage {
-  width: min(100% - 2rem, var(--max));
-  max-width: min(100% - 2rem, var(--max));
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
   height: 100%;
-  margin-inline: auto;
-  gap: clamp(0.75rem, 1.5vw, 1.5rem);
-  padding-inline: 0;
-  justify-content: flex-start;
-  align-items: stretch;
+  margin: 0;
+  gap: 0;
+  padding: 0;
 }
 
 .hl-card--valence .hl-card__media {
-  position: relative;
-  flex: 0 0 auto;
+  position: absolute;
+  left: max(1rem, calc((100% - var(--max)) / 2));
+  top: 0;
+  z-index: 1;
+  flex: none;
   height: 100%;
   width: auto;
   aspect-ratio: 9 / 16;
@@ -497,17 +500,22 @@ select {
 }
 
 .hl-card--valence .hl-card__label {
-  position: relative;
-  flex: 1 1 auto;
+  position: absolute;
+  left: 50%;
+  right: max(1rem, calc((100% - var(--max)) / 2));
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  flex: none;
   width: auto;
   min-width: 0;
-  height: 100%;
+  height: auto;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: clamp(1.25rem, 3vw, 2.75rem);
-  padding-left: clamp(2rem, 4.5vw, 3.5rem);
+  padding-left: 1.35rem;
   box-sizing: border-box;
   overflow: hidden;
   text-align: left;
@@ -541,7 +549,7 @@ select {
   position: relative;
   z-index: 2;
   max-width: 22rem;
-  margin-left: 0.75rem;
+  margin-left: 0.65rem;
 }
 
 .hl-card--valence .hl-card__eyebrow,
@@ -574,6 +582,7 @@ select {
   }
 
   .hl-card--valence .hl-card__stage {
+    display: flex;
     flex-direction: column;
     justify-content: stretch;
     gap: 0;
@@ -581,6 +590,9 @@ select {
   }
 
   .hl-card--valence .hl-card__media {
+    position: relative;
+    left: auto;
+    top: auto;
     flex: 1 1 58%;
     width: min(78vw, 18rem);
     height: auto;
@@ -598,6 +610,11 @@ select {
   }
 
   .hl-card--valence .hl-card__label {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
     flex: 0 0 42%;
     width: 100%;
     height: auto;
@@ -613,6 +630,7 @@ select {
 
   .hl-card--valence .hl-card__label-copy {
     max-width: none;
+    margin-left: 0;
   }
 }
 
