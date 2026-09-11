@@ -530,9 +530,12 @@ select {
 
 .hl-card--valence .hl-card__label-bg {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  width: 75%;
+  height: 75%;
+  transform: translate(-50%, -50%);
   object-fit: cover;
   object-position: center 58%;
   z-index: 0;
