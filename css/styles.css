@@ -2246,8 +2246,8 @@ a.partners-cr7__cell:focus-visible {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.72) 45%, rgba(0, 0, 0, 0.88) 100%),
-    url("../assets/devenir-partenaire/bg-trajectoire.jpg") center 30% / cover no-repeat;
+    linear-gradient(180deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.82) 100%),
+    url("../assets/devenir-partenaire/bg-trajectoire.jpg") center 42% / cover no-repeat;
   z-index: 0;
 }
 
@@ -2309,7 +2309,7 @@ a.partners-cr7__cell:focus-visible {
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: center 35%;
 }
 
 .dp-milestones {
@@ -2387,7 +2387,7 @@ a.partners-cr7__cell:focus-visible {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Miser sur Malo — vertical */
+/* Miser sur Malo — 4 colonnes côte à côte */
 .dp-miser {
   padding: 3.5rem 0 4rem;
   background: #000;
@@ -2395,8 +2395,8 @@ a.partners-cr7__cell:focus-visible {
 
 .dp-miser .section__inner {
   display: grid;
-  grid-template-columns: minmax(7rem, 11rem) 1fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(6.5rem, 9.5rem) 1fr;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
   align-items: start;
 }
 
@@ -2419,20 +2419,22 @@ a.partners-cr7__cell:focus-visible {
 .dp-miser__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-size: clamp(2rem, 4vw, 3.1rem);
   line-height: 0.92;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .dp-miser__list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  align-items: start;
 }
 
 .dp-miser__card {
-  max-width: 28rem;
+  max-width: none;
+  min-width: 0;
 }
 
 .dp-miser__card img {
@@ -2440,21 +2442,23 @@ a.partners-cr7__cell:focus-visible {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center top;
   background: #111;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .dp-miser__card h3 {
-  margin: 0 0 0.45rem;
-  font-size: 1.15rem;
+  margin: 0 0 0.4rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
   font-weight: 800;
+  line-height: 1.25;
 }
 
 .dp-miser__card p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: clamp(0.8rem, 1.15vw, 0.92rem);
+  line-height: 1.45;
 }
 
 /* Besoins + roues */
@@ -2488,8 +2492,11 @@ a.partners-cr7__cell:focus-visible {
 
 .dp-besoins__lead {
   margin: 0 0 2rem;
-  max-width: 40rem;
+  max-width: none;
   color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow-x: auto;
+  font-size: clamp(0.82rem, 1.35vw, 1.05rem);
 }
 
 .dp-budget {
@@ -2599,6 +2606,16 @@ a.partners-cr7__cell:focus-visible {
   justify-content: space-between;
   gap: 0.75rem;
   margin-bottom: 1rem;
+}
+
+.dp-pack__medal-img {
+  width: 3.75rem;
+  height: 3.75rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #111;
 }
 
 .dp-pack__medal {
@@ -2769,6 +2786,14 @@ a.partners-cr7__cell:focus-visible {
 
   .dp-miser__title br {
     display: none;
+  }
+
+  .dp-miser__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dp-besoins__lead {
+    white-space: normal;
   }
 
   .dp-budget,
