@@ -584,6 +584,7 @@ select {
     width: 100%;
     height: auto;
     min-height: 0;
+    justify-content: center;
   }
 
   .hl-card--valence .hl-card__media video,
