@@ -70,15 +70,110 @@
     });
   });
 
+  const EVENT_GALLERIES = {
+    valence: [
+      "assets/medias/2026_valence_1.jpeg",
+      "assets/medias/2026_valence_2.jpeg",
+      "assets/medias/2026_valence_4.jpeg",
+      "assets/medias/2026_valence_5.jpeg",
+      "assets/medias/2026_valence_6.jpg",
+      "assets/medias/2026_valence_7.png",
+      "assets/medias/2026_valence_8.png",
+    ],
+    area47: [
+      "assets/medias/2026_area47_1.jpg",
+      "assets/medias/2026_area47_2.jpg",
+    ],
+    entrainement: [
+      "assets/medias/entrainement_1.jpg",
+      "assets/medias/entrainement_2.png",
+      "assets/medias/entrainement_3.png",
+      "assets/medias/entrainement_4.jpg",
+    ],
+    loureira: [
+      "assets/medias/2025_loureira_1.png",
+      "assets/medias/2025_loureira_2.jpeg",
+      "assets/medias/2025_loureira_3.jpeg",
+      "assets/medias/2025_loureira_6.png",
+    ],
+    monthey: [
+      "assets/medias/2025_monthey_1.png",
+      "assets/medias/2025_monthey_2.png",
+      "assets/medias/2025_monthey_3.png",
+    ],
+    saintgalmier: ["assets/medias/2024_saintgalmier_1.jpg"],
+    bouxwiller: [
+      "assets/medias/2024_bouxwiller_1.png",
+      "assets/medias/2024_bouxwiller_2.png",
+    ],
+  };
+
   const lightbox = document.querySelector(".lightbox");
   const lightboxImg = lightbox?.querySelector("img");
   const lightboxClose = lightbox?.querySelector(".lightbox__close");
+  const lightboxPrev = lightbox?.querySelector(".lightbox__nav--prev");
+  const lightboxNext = lightbox?.querySelector(".lightbox__nav--next");
+  const lightboxCounter = lightbox?.querySelector(".lightbox__counter");
+  let galleryItems = [];
+  let galleryIndex = 0;
 
+  const normalizeGallerySrc = (src) => {
+    if (!src) return "";
+    try {
+      const u = new URL(src, window.location.href);
+      return u.pathname.replace(/^\//, "");
+    } catch {
+      return String(src).replace(/^\//, "");
+    }
+  };
+
+  const showGalleryAt = (index) => {
+    if (!lightbox || !lightboxImg || !galleryItems.length) return;
+    galleryIndex = ((index % galleryItems.length) + galleryItems.length) % galleryItems.length;
+    const src = galleryItems[galleryIndex];
+    lightboxImg.src = src;
+    if (lightboxCounter) {
+      if (galleryItems.length > 1) {
+        lightboxCounter.hidden = false;
+        lightboxCounter.textContent = `${galleryIndex + 1} / ${galleryItems.length}`;
+      } else {
+        lightboxCounter.hidden = true;
+      }
+    }
+    const multi = galleryItems.length > 1;
+    lightboxPrev?.toggleAttribute("hidden", !multi);
+    lightboxNext?.toggleAttribute("hidden", !multi);
+  };
+
+  const openEventGallery = (eventKey) => {
+    const list = EVENT_GALLERIES[eventKey];
+    if (!list?.length || !lightbox || !lightboxImg) return;
+    galleryItems = list.slice();
+    /* Toujours démarrer sur la photo 1 de l’événement */
+    showGalleryAt(0);
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  };
+
+  document.querySelectorAll("[data-gallery]").forEach((el) => {
+    const eventKey = el.getAttribute("data-gallery");
+    const first = EVENT_GALLERIES[eventKey]?.[0];
+    const thumb = el.querySelector("img");
+    /* Vignette = toujours la photo 1 */
+    if (first && thumb) {
+      thumb.setAttribute("src", first);
+      el.setAttribute("data-gallery-start", first);
+    }
+    el.addEventListener("click", () => openEventGallery(eventKey));
+  });
+
+  // Compat : ancien data-lightbox mono-image
   document.querySelectorAll("[data-lightbox]").forEach((el) => {
     el.addEventListener("click", () => {
       const src = el.getAttribute("data-lightbox") || el.querySelector("img")?.src;
-      if (!lightbox || !lightboxImg || !src) return;
-      lightboxImg.src = src;
+      if (!src || !lightbox || !lightboxImg) return;
+      galleryItems = [src];
+      showGalleryAt(0);
       lightbox.classList.add("is-open");
       document.body.style.overflow = "hidden";
     });
@@ -88,13 +183,25 @@
     if (!lightbox) return;
     lightbox.classList.remove("is-open");
     document.body.style.overflow = "";
+    galleryItems = [];
   };
   lightboxClose?.addEventListener("click", closeLightbox);
+  lightboxPrev?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showGalleryAt(galleryIndex - 1);
+  });
+  lightboxNext?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showGalleryAt(galleryIndex + 1);
+  });
   lightbox?.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
   });
   document.addEventListener("keydown", (e) => {
+    if (!lightbox?.classList.contains("is-open")) return;
     if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") showGalleryAt(galleryIndex - 1);
+    if (e.key === "ArrowRight") showGalleryAt(galleryIndex + 1);
   });
 
   const reveals = document.querySelectorAll(".reveal");
@@ -115,17 +222,115 @@
     reveals.forEach((el) => el.classList.add("is-in"));
   }
 
-  document.querySelectorAll("form[data-demo-form]").forEach((form) => {
-    form.addEventListener("submit", (e) => {
+  const t = (key, fallback) =>
+    (window.MaloI18n && window.MaloI18n.t(key)) || fallback;
+
+  const CONTACT_TO = "laurentdusseau@gmail.com";
+
+  const sendViaPhp = async (payload) => {
+    const res = await fetch("contact.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || "php");
+    return true;
+  };
+
+  const sendViaFormSubmit = async (payload) => {
+    const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_TO}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name: payload.name,
+        email: payload.email,
+        type: payload.type,
+        message: payload.message,
+        _subject: `MDB site — Contact : ${payload.type || "Message"}`,
+        _template: "table",
+        _captcha: "false",
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.success === "false" || data.success === false) {
+      throw new Error(data.message || "formsubmit");
+    }
+    return true;
+  };
+
+  document.querySelectorAll("form[data-contact-form]").forEach((form) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const msg = form.querySelector("[data-form-msg]");
+      const btn = form.querySelector('button[type="submit"]');
+      const fd = new FormData(form);
+
+      if (String(fd.get("website") || "").trim()) {
+        form.reset();
+        return;
+      }
+
+      const typeKey = String(fd.get("type") || "").trim();
+      const typeLabel =
+        typeKey === "partner"
+          ? t("contact.opt.partner", "Partenaire / marque")
+          : typeKey === "press"
+            ? t("contact.opt.press", "Presse / média")
+            : typeKey === "other"
+              ? t("contact.opt.other", "Fan / autre")
+              : typeKey;
+
+      const payload = {
+        type: typeLabel,
+        name: String(fd.get("name") || "").trim(),
+        email: String(fd.get("email") || "").trim(),
+        message: String(fd.get("message") || "").trim(),
+      };
+
+      if (!payload.name || !payload.email || !payload.message) {
+        if (msg) {
+          msg.hidden = false;
+          msg.style.color = "var(--pink)";
+          msg.textContent = t("contact.form.error", "Champs incomplets.");
+        }
+        return;
+      }
+
+      if (btn) {
+        btn.disabled = true;
+      }
       if (msg) {
         msg.hidden = false;
-        msg.textContent =
-          (window.MaloI18n && window.MaloI18n.t("contact.form.ok")) ||
-          "Message enregistré en local (maquette) — brancher l’envoi plus tard.";
+        msg.style.color = "var(--muted)";
+        msg.textContent = t("contact.form.sending", "Envoi en cours…");
       }
-      form.reset();
+
+      try {
+        try {
+          await sendViaPhp(payload);
+        } catch (_) {
+          await sendViaFormSubmit(payload);
+        }
+        form.reset();
+        if (msg) {
+          msg.style.color = "var(--pink)";
+          msg.textContent = t(
+            "contact.form.ok",
+            "Message envoyé — merci, on vous répond vite."
+          );
+        }
+      } catch (_) {
+        if (msg) {
+          msg.style.color = "var(--pink)";
+          msg.textContent = t(
+            "contact.form.error",
+            "Envoi impossible pour le moment. Réessayez ou appelez le 06 51 11 02 01."
+          );
+        }
+      } finally {
+        if (btn) btn.disabled = false;
+      }
     });
   });
 
@@ -159,8 +364,8 @@
       video.playsInline = true;
       video.setAttribute("playsinline", "");
       video.setAttribute("muted", "");
-      if (video.readyState === 0) {
-        video.preload = "metadata";
+      video.preload = "auto";
+      if (video.readyState < 2) {
         try {
           video.load();
         } catch (_) {}
@@ -257,6 +462,13 @@
     if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1, true));
     if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1, true));
 
-    setActive(0);
+    /* Toujours démarrer sur Valence (1re carte), jamais sur Saint-Galmier */
+    const bootValence = () => {
+      if (rail) rail.scrollLeft = 0;
+      goTo(0, false);
+    };
+    bootValence();
+    requestAnimationFrame(bootValence);
+    window.addEventListener("load", bootValence, { once: true });
   }
 })();

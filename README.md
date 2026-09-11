@@ -26,14 +26,10 @@ npx --yes serve -p 5173
 
 Uploader / déployer le **contenu** de ce dépôt à la racine `public_html/` du site `malodusseaubrossard.com`.
 
-## Galeries mosaïque
+## Médias (`assets/`)
 
-Photos dans `assets/galeries/` :
+Un **répertoire par page** (junction → `Malo-Sponsoring/assets/`) :
 
-- `saint-galmier/`
-- `bouxwiller/`
-- `loureira-portugal/`
-- `valence-france/`
-- `monthey/`
-- `entrainement/`
-- `autres-evenements/`
+`accueil/` · `medias/` · `partenaires/` · `apropos/` · `devenir-partenaire/`
+
+URL : `/assets/{page}/{fichier}` — voir `assets/README.md`.

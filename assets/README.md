@@ -1,22 +1,18 @@
-﻿# Assets — organisation par menu
+﻿# Assets MDB — un répertoire par page
 
-| Dossier | Menu / usage |
-|---------|----------------|
-| `accueil/` | Hero page d’accueil |
-| `medias/videos/` | Highlights vidéo (section Médias) |
-| `medias/photos/` | Galeries photos par compétition / thème |
-| `partenaires/` | Logos partenaires |
-| `apropos/` | Portrait & photos section À propos |
-| `devenir-partenaire/` | Visuels page prospection (hors menu public) |
+| Dossier | Page |
+|---------|------|
+| `accueil/` | Accueil (hero) |
+| `medias/` | Médias (photos + vidéos) |
+| `partenaires/` | Partenaires (logos) |
+| `apropos/` | À propos |
+| `devenir-partenaire/` | Devenir partenaire |
+| `ppt/` | Pages PPT (interne) |
+| `preview/` | Previews (interne) |
 
-## Galeries photos (`medias/photos/`)
+## Médias — nomenclature
 
-| Sous-dossier | Événement |
-|--------------|-----------|
-| `saint-galmier/` | CF U17 2024 |
-| `bouxwiller/` | CF U19 2025 |
-| `loureira-portugal/` | Qualifier Elite 2025 — Portugal |
-| `valence-france/` | Qualifier Elite 2026 — Valence |
-| `monthey/` | Mondiaux UCI 2025 — Monthey |
-| `entrainement/` | Entraînements |
-| `autres-evenements/` | Divers |
+Fichiers dans `medias/` : `{année}_{site}_{numéro}.ext`  
+(ex. `2026_valence_1.jpeg`, `2025_loureira_2.jpeg`, `2024_saintgalmier.mp4`).
+
+Sans année (sessions) : `entrainement_1.jpg`.

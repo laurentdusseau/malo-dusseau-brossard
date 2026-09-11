@@ -55,28 +55,30 @@
       "obj.title": "Prochaines étapes",
       "obj.beijing.title": "Objectif — Mondiaux UCI Pump Track · Pékin",
       "obj.beijing.meta": "🇨🇳 Chine · octobre 2026 · Qualification via Valence",
-      "obj.france.title": "Objectif — Mondiaux UCI · France",
+      "obj.france.title": "Objectif — Mondiaux UCI Pump Track · France",
       "obj.france.meta": "🇫🇷 Haute-Savoie · 2027 · Échéance à domicile",
       "media.eyebrow": "Vidéos & photos",
       "media.title": "Médias",
       "media.videos": "Highlights",
       "media.photos": "Photos",
-      "media.youtube": "Chaîne YouTube →",
       "gal.sg.kicker": "Championnat de France",
-      "gal.sg.event": "Saint-Galmier 2024",
+      "gal.sg.event": "Saint-Galmier 🇫🇷 · 2024",
       "gal.bx.kicker": "Championnat de France",
-      "gal.bx.event": "Bouxwiller 2025",
+      "gal.bx.event": "Bouxwiller 🇫🇷 · 2025",
       "gal.pt.kicker": "Qualifier Monde Elite",
-      "gal.pt.event": "Loureira · Portugal 2025",
+      "gal.pt.event": "Loureira 🇵🇹 · 2025",
       "gal.va.kicker": "Qualifier Monde Elite",
-      "gal.va.event": "Valence · France 2026",
+      "gal.va.event": "Valence 🇫🇷 · 2026",
       "gal.mh.kicker": "Mondiaux UCI",
-      "gal.mh.event": "Monthey 2025",
+      "gal.mh.event": "Monthey 🇨🇭 · 2025",
       "gal.tr.kicker": "Session",
       "gal.tr.event": "Entraînement",
+      "gal.a47.kicker": "Qualifier Monde Elite",
+      "gal.a47.event": "Area 47 🇦🇹 · 2026",
       "gal.ot.kicker": "Divers",
       "gal.ot.event": "Autres événements",
       "partners.title": "<strong>Mes partenaires</strong> qui me soutiennent",
+      "partners.join": "Me rejoindre",
       "contact.title": "Contact",
       "contact.youare": "Vous êtes",
       "contact.opt.partner": "Partenaire / marque",
@@ -86,8 +88,9 @@
       "contact.email": "Email",
       "contact.message": "Message",
       "contact.send": "Envoyer",
-      "contact.form.ok":
-        "Message enregistré en local (maquette) — brancher l’envoi plus tard.",
+      "contact.form.ok": "Message envoyé — merci, on vous répond vite.",
+      "contact.form.error": "Envoi impossible pour le moment. Réessayez ou appelez le 06 51 11 02 01.",
+      "contact.form.sending": "Envoi en cours…",
       "contact.partnerships": "Partenariats",
       "contact.asso":
         "Association <strong style=\"color: var(--text)\">MALO PUMPTRACK BMX</strong><br />Loi 1901 · RNA W332036470 · Pessac (33600)",
@@ -148,28 +151,30 @@
       "obj.title": "Next steps",
       "obj.beijing.title": "Goal — UCI Pump Track Worlds · Beijing",
       "obj.beijing.meta": "🇨🇳 China · October 2026 · Qualified via Valencia",
-      "obj.france.title": "Goal — UCI Worlds · France",
+      "obj.france.title": "Goal — UCI Pump Track Worlds · France",
       "obj.france.meta": "🇫🇷 Haute-Savoie · 2027 · Home event",
       "media.eyebrow": "Videos & photos",
       "media.title": "Media",
       "media.videos": "Highlights",
       "media.photos": "Photos",
-      "media.youtube": "YouTube channel →",
       "gal.sg.kicker": "French Championships",
-      "gal.sg.event": "Saint-Galmier 2024",
+      "gal.sg.event": "Saint-Galmier 🇫🇷 · 2024",
       "gal.bx.kicker": "French Championships",
-      "gal.bx.event": "Bouxwiller 2025",
+      "gal.bx.event": "Bouxwiller 🇫🇷 · 2025",
       "gal.pt.kicker": "World Elite Qualifier",
-      "gal.pt.event": "Loureira · Portugal 2025",
+      "gal.pt.event": "Loureira 🇵🇹 · 2025",
       "gal.va.kicker": "World Elite Qualifier",
-      "gal.va.event": "Valence · France 2026",
+      "gal.va.event": "Valence 🇫🇷 · 2026",
       "gal.mh.kicker": "UCI Worlds",
-      "gal.mh.event": "Monthey 2025",
+      "gal.mh.event": "Monthey 🇨🇭 · 2025",
       "gal.tr.kicker": "Session",
       "gal.tr.event": "Training",
+      "gal.a47.kicker": "World Elite Qualifier",
+      "gal.a47.event": "Area 47 🇦🇹 · 2026",
       "gal.ot.kicker": "Misc",
       "gal.ot.event": "Other events",
       "partners.title": "<strong>My partners</strong> who support me",
+      "partners.join": "Join me",
       "contact.title": "Contact",
       "contact.youare": "You are",
       "contact.opt.partner": "Partner / brand",
@@ -179,7 +184,9 @@
       "contact.email": "Email",
       "contact.message": "Message",
       "contact.send": "Send",
-      "contact.form.ok": "Message saved locally (demo) — wire up sending later.",
+      "contact.form.ok": "Message sent — thanks, we’ll get back to you soon.",
+      "contact.form.error": "Could not send right now. Please try again or call +33 6 51 11 02 01.",
+      "contact.form.sending": "Sending…",
       "contact.partnerships": "Partnerships",
       "contact.asso":
         "Association <strong style=\"color: var(--text)\">MALO PUMPTRACK BMX</strong><br />Law 1901 · RNA W332036470 · Pessac (33600)",
@@ -262,12 +269,15 @@
 
   /** Drapeaux colorés (Twemoji) — rendu propre sous Windows, comme LFL. */
   function refreshCountryFlags() {
-    const root = document.getElementById("palmares");
-    if (!root || typeof twemoji === "undefined" || !twemoji.parse) return;
-    twemoji.parse(root, {
+    if (typeof twemoji === "undefined" || !twemoji.parse) return;
+    const opts = {
       folder: "svg",
       ext: ".svg",
       base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
+    };
+    ["palmares", "medias"].forEach((id) => {
+      const root = document.getElementById(id);
+      if (root) twemoji.parse(root, opts);
     });
   }
 
