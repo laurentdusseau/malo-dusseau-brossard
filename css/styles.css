@@ -906,11 +906,12 @@ select {
 
 /* —— Sections —— */
 .section {
-  padding: 5.5rem 0;
+  /* Peu d’air sous le trait / nav — comme Highlights */
+  padding: 1.75rem 0 4.25rem;
 }
 
 .section--tight {
-  padding: 3.5rem 0;
+  padding: 1.5rem 0 3rem;
 }
 
 .section__inner {
@@ -942,7 +943,7 @@ select {
 }
 
 .section-head {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.35rem;
 }
 
 .section.section--medias {
@@ -2024,12 +2025,12 @@ select {
 /* —— Partenaires style CR7 : grille logos only —— */
 .partners-cr7 {
   min-height: auto;
-  padding: 5rem 0 4.5rem;
+  padding: 1.75rem 0 4rem;
   background: #000;
 }
 
 .partners-cr7__title {
-  margin: 0 auto 3rem;
+  margin: 0 auto 2rem;
   max-width: 48rem;
   padding-inline: 1.25rem;
   text-align: center;
