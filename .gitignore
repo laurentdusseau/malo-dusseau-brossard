@@ -1,0 +1,24 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# OS / éditeur
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.temp
+.vscode/
+.idea/
+
+# Préviews / brouillons / archives locales
+_preview/
+_ppt_pages/
+_old_*/
+photos/
+**/LIRE-MOI.txt
+
+# Logs
+*.log
+Logs/

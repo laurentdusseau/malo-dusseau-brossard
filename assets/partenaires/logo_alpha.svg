@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-label="Alpha">
+  <defs>
+    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="120" rx="8" fill="#0b1f4a"/>
+  <path d="M48 88 L96 24 L144 88 Z" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M72 72 H120" stroke="#ef4444" stroke-width="7" stroke-linecap="round"/>
+  <text x="168" y="78" fill="#fff" font-family="Arial Black, Arial, sans-serif" font-size="52" font-style="italic" font-weight="900" letter-spacing="4">ALPHA</text>
+</svg>

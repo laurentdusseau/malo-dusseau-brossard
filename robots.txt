@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /devenir-partenaire.html
+Disallow: /devenir-partenaire
+
+# Anciennes URLs = redirections vers l’accueil (évite le contenu fantôme)
+Disallow: /a-propos.html
+Disallow: /palmares.html
+Disallow: /medias.html
+Disallow: /partenaires.html
+Disallow: /contact.html
+
+Sitemap: https://malodusseaubrossard.com/sitemap.xml

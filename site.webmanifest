@@ -1,0 +1,24 @@
+{
+  "name": "Malo Dusseau Brossard",
+  "short_name": "Malo",
+  "description": "Pilote français Pumptrack Elite — champion de France, Qualifier Monde Elite.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#ff2d75",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/apropos/malo_portrait_detoure.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
