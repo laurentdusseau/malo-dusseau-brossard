@@ -532,7 +532,7 @@ select {
   object-position: center 40%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.52;
+  opacity: 0.68;
 }
 
 .hl-card--valence .hl-card__label-shade {
