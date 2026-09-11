@@ -149,6 +149,7 @@
     const multi = galleryItems.length > 1;
     setNavHidden(lightboxPrev, !multi);
     setNavHidden(lightboxNext, !multi);
+    lightboxImg.style.cursor = multi ? "pointer" : "default";
   };
 
   const openEventGallery = (eventKey) => {
@@ -210,6 +211,10 @@
   lightboxNext?.addEventListener("click", (e) => {
     e.stopPropagation();
     showGalleryAt(galleryIndex + 1);
+  });
+  lightboxImg?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (galleryItems.length > 1) showGalleryAt(galleryIndex + 1);
   });
   lightbox?.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
