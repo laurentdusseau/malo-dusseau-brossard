@@ -117,21 +117,27 @@
   let galleryItems = [];
   let galleryIndex = 0;
 
-  const normalizeGallerySrc = (src) => {
+  const galleryUrl = (src) => {
     if (!src) return "";
     try {
-      const u = new URL(src, window.location.href);
-      return u.pathname.replace(/^\//, "");
+      return new URL(src, document.baseURI).href;
     } catch {
-      return String(src).replace(/^\//, "");
+      return src;
     }
+  };
+
+  const setNavHidden = (el, hide) => {
+    if (!el) return;
+    if (hide) el.setAttribute("hidden", "");
+    else el.removeAttribute("hidden");
   };
 
   const showGalleryAt = (index) => {
     if (!lightbox || !lightboxImg || !galleryItems.length) return;
-    galleryIndex = ((index % galleryItems.length) + galleryItems.length) % galleryItems.length;
-    const src = galleryItems[galleryIndex];
-    lightboxImg.src = src;
+    galleryIndex =
+      ((index % galleryItems.length) + galleryItems.length) % galleryItems.length;
+    lightboxImg.src = galleryUrl(galleryItems[galleryIndex]);
+    lightboxImg.alt = `Photo ${galleryIndex + 1} / ${galleryItems.length}`;
     if (lightboxCounter) {
       if (galleryItems.length > 1) {
         lightboxCounter.hidden = false;
@@ -141,31 +147,42 @@
       }
     }
     const multi = galleryItems.length > 1;
-    lightboxPrev?.toggleAttribute("hidden", !multi);
-    lightboxNext?.toggleAttribute("hidden", !multi);
+    setNavHidden(lightboxPrev, !multi);
+    setNavHidden(lightboxNext, !multi);
   };
 
   const openEventGallery = (eventKey) => {
     const list = EVENT_GALLERIES[eventKey];
     if (!list?.length || !lightbox || !lightboxImg) return;
     galleryItems = list.slice();
-    /* Toujours démarrer sur la photo 1 de l’événement */
-    showGalleryAt(0);
+    galleryIndex = 0;
+    /* Ouvrir d’abord l’overlay (sinon gros JPEG = impression que le clic ne marche pas) */
     lightbox.classList.add("is-open");
     document.body.style.overflow = "hidden";
+    showGalleryAt(0);
   };
 
-  document.querySelectorAll("[data-gallery]").forEach((el) => {
-    const eventKey = el.getAttribute("data-gallery");
-    const first = EVENT_GALLERIES[eventKey]?.[0];
-    const thumb = el.querySelector("img");
-    /* Vignette = toujours la photo 1 */
-    if (first && thumb) {
-      thumb.setAttribute("src", first);
-      el.setAttribute("data-gallery-start", first);
-    }
-    el.addEventListener("click", () => openEventGallery(eventKey));
-  });
+  const galleryRoot = document.querySelector(".gallery");
+  if (galleryRoot) {
+    galleryRoot.querySelectorAll("[data-gallery]").forEach((el) => {
+      const eventKey = el.getAttribute("data-gallery");
+      const first = EVENT_GALLERIES[eventKey]?.[0];
+      const thumb = el.querySelector("img");
+      if (first && thumb) {
+        thumb.setAttribute("src", first);
+        el.setAttribute("data-gallery-start", first);
+      }
+    });
+    galleryRoot.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-gallery]");
+      if (!el || !galleryRoot.contains(el)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const eventKey = el.getAttribute("data-gallery");
+      /* Laisser finir le click souris/tactile avant d’afficher l’overlay */
+      window.setTimeout(() => openEventGallery(eventKey), 0);
+    });
+  }
 
   // Compat : ancien data-lightbox mono-image
   document.querySelectorAll("[data-lightbox]").forEach((el) => {
