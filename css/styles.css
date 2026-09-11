@@ -273,23 +273,6 @@ select {
   overflow: hidden;
 }
 
-.hl-strip__head {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 4;
-  width: min(100% - 2rem, var(--max));
-  margin-inline: auto;
-  padding-top: 0.15rem;
-  pointer-events: none;
-}
-
-.hl-strip__head .media-block__title {
-  margin: 0;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
-}
-
 .hl-strip__stage {
   position: relative;
   max-width: 100%;
@@ -396,10 +379,10 @@ select {
   opacity: 0;
 }
 
-/* Vidéo verticale — bloc vidéo+texte collé en haut (aligné avec le titre Highlights) */
+/* Vidéo verticale — bloc vidéo+texte groupé au centre (pas de trou noir) */
 .hl-card--portrait {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   background: #000;
 }
@@ -477,11 +460,12 @@ select {
   text-shadow: none;
 }
 
-/* Valence — vidéo contain 9:16 (inchangée) | podium très transparent à droite */
+/* Valence — vidéo contain 9:16 | podium à droite ; bord gauche = titre Highlights */
 .hl-card--valence .hl-card__stage {
-  width: 100%;
-  max-width: 100%;
+  width: min(100% - 2rem, var(--max));
+  max-width: min(100% - 2rem, var(--max));
   height: 100%;
+  margin-inline: auto;
   gap: 0;
   padding-inline: 0;
   justify-content: stretch;
@@ -495,8 +479,8 @@ select {
   max-height: none;
   aspect-ratio: auto;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
   background: #000;
 }
 
@@ -968,6 +952,11 @@ select {
 
 .section.section--medias {
   padding: 0 0 3.5rem;
+}
+
+.section--medias .media-block__head {
+  margin-bottom: 0.35rem;
+  padding-top: 0.15rem;
 }
 
 .section--medias .hl-strip {
