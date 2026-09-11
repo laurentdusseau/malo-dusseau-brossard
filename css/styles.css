@@ -460,46 +460,47 @@ select {
   text-shadow: none;
 }
 
-/* Valence — vidéo contain 9:16 | podium à droite ; bord gauche = titre Highlights */
+/* Valence — vidéo 9:16 non écrasée, bord gauche = H de Highlights | podium agrandi */
 .hl-card--valence .hl-card__stage {
   width: min(100% - 2rem, var(--max));
   max-width: min(100% - 2rem, var(--max));
   height: 100%;
   margin-inline: auto;
-  gap: 0;
+  gap: clamp(0.75rem, 1.5vw, 1.5rem);
   padding-inline: 0;
-  justify-content: stretch;
+  justify-content: flex-start;
   align-items: stretch;
 }
 
 .hl-card--valence .hl-card__media {
-  flex: 0 0 50%;
-  width: 50%;
+  position: relative;
+  flex: 0 0 auto;
   height: 100%;
-  max-height: none;
-  aspect-ratio: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  width: auto;
+  aspect-ratio: 9 / 16;
+  max-height: 100%;
+  display: block;
   background: #000;
 }
 
-/* Ne pas cropper / zoomer la vidéo — même rendu qu’avant le podium */
+/* Cadre 9:16 fixe — pas de compression horizontale */
 .hl-card--valence .hl-card__media video,
 .hl-card--valence .hl-card__media .hl-card__poster {
-  position: relative;
-  inset: auto;
-  width: auto;
+  position: absolute;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  max-width: 100%;
-  aspect-ratio: 9 / 16;
+  max-width: none;
+  aspect-ratio: auto;
   object-fit: contain;
   object-position: center center;
 }
 
 .hl-card--valence .hl-card__label {
-  flex: 0 0 50%;
-  width: 50%;
+  position: relative;
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
   height: 100%;
   margin: 0;
   display: flex;
@@ -514,14 +515,12 @@ select {
 
 .hl-card--valence .hl-card__label-bg {
   position: absolute;
-  inset: auto;
-  top: 50%;
-  left: 50%;
-  width: 75%;
-  height: 75%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
   object-fit: contain;
-  object-position: center center;
+  object-position: left center;
   z-index: 0;
   pointer-events: none;
   opacity: 0.52;
@@ -581,16 +580,19 @@ select {
 
   .hl-card--valence .hl-card__media {
     flex: 1 1 58%;
-    width: 100%;
+    width: min(78vw, 18rem);
     height: auto;
-    min-height: 0;
-    justify-content: center;
+    max-height: min(58%, 26rem);
+    aspect-ratio: 9 / 16;
+    margin-inline: auto;
   }
 
   .hl-card--valence .hl-card__media video,
   .hl-card--valence .hl-card__media .hl-card__poster {
-    height: min(58vh, 26rem);
-    width: auto;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .hl-card--valence .hl-card__label {
@@ -601,6 +603,10 @@ select {
     justify-content: center;
     text-align: center;
     padding: 1.25rem 1rem;
+  }
+
+  .hl-card--valence .hl-card__label-bg {
+    object-position: center center;
   }
 
   .hl-card--valence .hl-card__label-copy {
