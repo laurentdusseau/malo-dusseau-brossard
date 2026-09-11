@@ -1308,6 +1308,7 @@ select {
 }
 
 .gallery__caption-kicker {
+  font-family: var(--font-body);
   font-size: clamp(0.78rem, 1.45vw, 0.95rem);
   font-weight: 800;
   letter-spacing: 0.12em;
