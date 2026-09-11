@@ -520,8 +520,8 @@ select {
   width: 75%;
   height: 75%;
   transform: translate(-50%, -50%);
-  object-fit: cover;
-  object-position: center 58%;
+  object-fit: contain;
+  object-position: center center;
   z-index: 0;
   pointer-events: none;
   opacity: 0.52;
