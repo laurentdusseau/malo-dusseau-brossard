@@ -81,6 +81,10 @@
     });
   });
 
+  const isOldMedia = (src) =>
+    /(?:^|[_\-.])old(?:[_\-.]|$)/i.test(String(src).split("/").pop() || "");
+  const galleryPhotos = (list) => (list || []).filter((src) => src && !isOldMedia(src));
+
   const EVENT_GALLERIES = {
     valence: [
       "assets/medias/2026_valence_1.jpeg",
@@ -94,12 +98,27 @@
     area47: [
       "assets/medias/2026_area47_1.jpg",
       "assets/medias/2026_area47_2.jpg",
+      "assets/medias/2026_area47_3.webp",
+      "assets/medias/2026_area47_4.webp",
+      "assets/medias/2026_area47_5.jpg",
+      "assets/medias/2026_area47_6.jpg",
     ],
     entrainement: [
       "assets/medias/entrainement_1.jpg",
       "assets/medias/entrainement_2.jpg",
       "assets/medias/entrainement_3.jpg",
       "assets/medias/entrainement_4.jpg",
+      "assets/medias/entrainement_5.jpg",
+      "assets/medias/entrainement_6.jpg",
+      "assets/medias/entrainement_7.jpg",
+      "assets/medias/entrainement_8.jpg",
+      "assets/medias/entrainement_9.jpg",
+      "assets/medias/entrainement_10.jpg",
+      "assets/medias/entrainement_11.jpg",
+      "assets/medias/entrainement_12.jpg",
+      "assets/medias/entrainement_13.jpg",
+      "assets/medias/entrainement_14.jpg",
+      "assets/medias/entrainement_15.jpg",
     ],
     loureira: [
       "assets/medias/2025_loureira_1.jpg",
@@ -111,11 +130,29 @@
       "assets/medias/2025_monthey_1.jpg",
       "assets/medias/2025_monthey_2.jpg",
       "assets/medias/2025_monthey_3.jpg",
+      "assets/medias/2025_monthey_4.jpg",
+      "assets/medias/2025_monthey_5.jpg",
+      "assets/medias/2025_monthey_6.jpg",
+      "assets/medias/2025_monthey_7.jpg",
     ],
-    saintgalmier: ["assets/medias/2024_saintgalmier_1.jpg"],
+    ainsa: [
+      "assets/medias/2025_ainsa_1.webp",
+      "assets/medias/2025_ainsa_2.webp",
+      "assets/medias/2025_ainsa_3.webp",
+      "assets/medias/2025_ainsa_4.webp",
+    ],
+    saintgalmier: [
+      "assets/medias/2024_saintgalmier_1.jpg",
+      "assets/medias/2024_saintgalmier_2.jpg",
+      "assets/medias/2024_saintgalmier_3.jpg",
+    ],
     bouxwiller: [
-      "assets/medias/2025_bouxwiller_1.jpg",
-      "assets/medias/2025_bouxwiller_2.jpg",
+      "assets/medias/2025_bouxwiller_1.jpg?v=20260912",
+      "assets/medias/2025_bouxwiller_2.jpg?v=20260912",
+      "assets/medias/2025_bouxwiller_3.jpg?v=20260912",
+      "assets/medias/2025_bouxwiller_4.jpg?v=20260912",
+      "assets/medias/2025_bouxwiller_5.jpg?v=20260912",
+      "assets/medias/2025_bouxwiller_6.jpg?v=20260912",
     ],
   };
 
@@ -188,7 +225,7 @@
   };
 
   const openEventGallery = (eventKey, trigger) => {
-    const list = EVENT_GALLERIES[eventKey];
+    const list = galleryPhotos(EVENT_GALLERIES[eventKey]);
     if (!list?.length || !lightbox || !lightboxImg) return;
     galleryItems = list.slice();
     galleryIndex = 0;
@@ -200,7 +237,7 @@
   if (galleryRoot) {
     galleryRoot.querySelectorAll("[data-gallery]").forEach((el) => {
       const eventKey = el.getAttribute("data-gallery");
-      const first = EVENT_GALLERIES[eventKey]?.[0];
+      const first = galleryPhotos(EVENT_GALLERIES[eventKey])[0];
       const thumb = el.querySelector("img");
       if (first && thumb) {
         thumb.setAttribute("src", first);
