@@ -598,10 +598,44 @@ select {
   outline-offset: 3px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  :root {
+    --hl-crop-t: 0px;
+    --hl-crop-b: 0px;
+  }
+
+  .hl-card {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .hl-card video,
+  .hl-card__poster {
+    top: 0;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .hl-card__title {
+    font-size: clamp(1.55rem, 8vw, 2.2rem);
+  }
+
+  .hl-card__label {
+    bottom: 0.75rem;
+    left: 1rem;
+    right: 4.25rem;
+  }
+
   .hl-strip__nav {
     width: 2.5rem;
     height: 2.5rem;
+  }
+
+  .hl-strip__sound {
+    width: 2.75rem;
+    height: 2.75rem;
+    bottom: 0.7rem;
   }
 }
 
