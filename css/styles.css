@@ -2663,14 +2663,14 @@ a.partners-cr7__cell:focus-visible {
 }
 
 .dp-aud__brand--ig {
-  background: linear-gradient(115deg, #f9ce34 0%, #ee2a7b 42%, #6228d7 100%);
+  background: linear-gradient(115deg, #2e2814 0%, #2a121c 42%, #161018 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .dp-aud__brand--yt {
-  background: linear-gradient(115deg, #ff4d4d 0%, #ff0000 48%, #c80000 100%);
+  background: linear-gradient(115deg, #321010 0%, #220808 48%, #120606 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
