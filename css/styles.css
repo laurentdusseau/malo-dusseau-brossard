@@ -706,6 +706,52 @@ select {
   pointer-events: none;
 }
 
+.hl-strip__sound {
+  position: absolute;
+  right: clamp(0.75rem, 2.2vw, 1.35rem);
+  bottom: clamp(0.75rem, 2vh, 1.25rem);
+  z-index: 4;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.38);
+  color: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.hl-strip__sound svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.hl-strip__sound-icon--on {
+  display: none;
+}
+
+.hl-strip__sound.is-on .hl-strip__sound-icon--off {
+  display: none;
+}
+
+.hl-strip__sound.is-on .hl-strip__sound-icon--on {
+  display: block;
+}
+
+.hl-strip__sound:hover {
+  background: rgba(0, 0, 0, 0.58);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+.hl-strip__sound:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+}
+
 .hl-strip__dots {
   display: flex;
   justify-content: center;
@@ -2738,7 +2784,7 @@ a.partners-cr7__cell:focus-visible {
   display: flex;
   width: 6.75rem;
   height: 6.75rem;
-  margin: 0 0 1.15rem;
+  margin: 0 auto 1.15rem;
   border-radius: 0.35rem;
 }
 
