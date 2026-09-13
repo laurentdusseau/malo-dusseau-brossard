@@ -2636,6 +2636,11 @@ a.partners-cr7__cell:focus-visible {
   overflow: visible;
 }
 
+.dp-aud:has(.dp-aud__shot:hover),
+.dp-aud:has(.dp-aud__shot:focus-within) {
+  z-index: 6;
+}
+
 .dp-aud__head {
   display: flex;
   justify-content: center;
@@ -2780,24 +2785,29 @@ a.partners-cr7__cell:focus-visible {
 .dp-aud__shot-thumb {
   display: block;
   width: 100%;
-  height: 11.5rem;
+  height: 16rem;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: 50% 18%;
+}
+
+.dp-aud__shot:hover,
+.dp-aud__shot:focus-within {
+  z-index: 8;
 }
 
 .dp-aud__shot-zoom {
   position: absolute;
-  left: 12%;
-  top: 40%;
+  left: calc(100% + 0.85rem);
+  top: 0;
   z-index: 30;
-  width: min(26rem, 78vw);
+  width: min(24rem, 56vw);
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: #000;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.72);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(8px);
+  transform: translateX(-6px);
   transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
 }
 
@@ -2811,7 +2821,7 @@ a.partners-cr7__cell:focus-visible {
 .dp-aud__shot:focus-within .dp-aud__shot-zoom {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .dp-aud__shot-open:focus-visible {
