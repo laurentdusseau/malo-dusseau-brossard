@@ -314,27 +314,11 @@ select {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
+  background: #000;
   z-index: -2;
-  transition: opacity 0.45s var(--ease), transform 0.7s var(--ease);
-  /* Fondu très léger — filet sur le bord */
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 1.5%, #000 98.5%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 2%, #000 96%, transparent 100%);
-  mask-image:
-    linear-gradient(to right, transparent 0%, #000 1.5%, #000 98.5%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 2%, #000 96%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-.hl-card:not(.is-active) video,
-.hl-card:not(.is-active) .hl-card__poster {
-  transform: scale(1.04);
+  transition: opacity 0.45s var(--ease);
 }
 
 .hl-card__shade {
@@ -379,40 +363,7 @@ select {
   opacity: 0;
 }
 
-/* Vidéos 16:9 — desktop cover, mobile contain (carte trop haute sinon) */
-.hl-card--landscape video,
-.hl-card--landscape .hl-card__poster {
-  object-position: 50% 40%;
-}
-
-.hl-card--saintgalmier video,
-.hl-card--saintgalmier .hl-card__poster {
-  object-position: 68% 42%;
-}
-
-.hl-card--bouxwiller video,
-.hl-card--bouxwiller .hl-card__poster {
-  object-position: 42% 40%;
-}
-
-.hl-card--valence video,
-.hl-card--valence .hl-card__poster {
-  object-position: 50% 42%;
-}
-
-.hl-card--loureira video,
-.hl-card--loureira .hl-card__poster {
-  object-position: 50% 40%;
-}
-
-@media (max-width: 768px) {
-  .hl-card--landscape video,
-  .hl-card--landscape .hl-card__poster {
-    object-fit: contain;
-    object-position: center center;
-    background: #000;
-  }
-}
+/* Vidéos 16:9 — image entière, pas de recadrage */
 
 /* Vidéo verticale — bloc vidéo+texte groupé au centre (pas de trou noir) */
 .hl-card--portrait {
