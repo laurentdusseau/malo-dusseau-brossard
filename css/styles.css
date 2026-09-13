@@ -2761,6 +2761,35 @@ a.partners-cr7__cell:focus-visible {
   overflow-wrap: anywhere;
 }
 
+.dp-aud__chart {
+  width: 100%;
+  margin: 1.15rem 0 0;
+  padding: 0;
+}
+
+.dp-aud__chart svg {
+  display: block;
+  width: 100%;
+  max-width: 14rem;
+  height: auto;
+}
+
+.dp-aud__chart-axis {
+  fill: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dp-aud__chart-year {
+  fill: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 700;
+}
+
 /* Besoins + roues */
 .dp-besoins {
   position: relative;

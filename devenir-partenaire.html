@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="stylesheet" href="css/styles.css?v=20260913m" />
+    <link rel="stylesheet" href="css/styles.css?v=20260913n" />
   </head>
   <body class="page-partner">
     <header class="site-header is-scrolled">
@@ -209,6 +209,23 @@
               <p class="dp-aud__num">2&nbsp;757</p>
               <p class="dp-aud__label" data-i18n="dp.aud.yt">abonnés</p>
               <p class="dp-aud__meta" data-i18n="dp.aud.yt.meta">1,2 M vues en 2026 · 600 k en 2025</p>
+              <figure class="dp-aud__chart">
+                <svg viewBox="0 0 180 100" role="img" aria-labelledby="yt-chart-title">
+                  <title id="yt-chart-title" data-i18n="dp.aud.yt.chart">Évolution YouTube 2025 → 2026</title>
+                  <text class="dp-aud__chart-axis" x="44" y="14" text-anchor="middle" data-i18n="dp.aud.yt.chart.views">Vues</text>
+                  <text class="dp-aud__chart-axis" x="136" y="14" text-anchor="middle" data-i18n="dp.aud.yt.chart.subs">Abonnés</text>
+                  <!-- Vues : 599 616 vs 1 200 360 → 28 / 56 -->
+                  <rect x="22" y="48" width="16" height="28" fill="rgba(255,255,255,0.38)" />
+                  <rect x="44" y="20" width="16" height="56" fill="#ff0000" />
+                  <text class="dp-aud__chart-year" x="30" y="92" text-anchor="middle">25</text>
+                  <text class="dp-aud__chart-year" x="52" y="92" text-anchor="middle">26</text>
+                  <!-- Abonnés gagnés : +867 vs +1 600 → 30 / 56 -->
+                  <rect x="114" y="46" width="16" height="30" fill="rgba(255,255,255,0.38)" />
+                  <rect x="136" y="20" width="16" height="56" fill="#ff0000" />
+                  <text class="dp-aud__chart-year" x="122" y="92" text-anchor="middle">25</text>
+                  <text class="dp-aud__chart-year" x="144" y="92" text-anchor="middle">26</text>
+                </svg>
+              </figure>
             </article>
             <article class="dp-aud">
               <a
@@ -399,7 +416,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@15.1.0/dist/twemoji.min.js" crossorigin="anonymous"></script>
-    <script src="js/i18n.js?v=20260913i"></script>
+    <script src="js/i18n.js?v=20260913j"></script>
     <script src="js/site.js?v=20260913d"></script>
   </body>
 </html>
