@@ -2664,11 +2664,44 @@ a.partners-cr7__cell:focus-visible {
 
 /* Chiffres d’audience — sous Miser sur Malo */
 .dp-audience {
-  padding: 0.25rem 0 4.25rem;
+  position: relative;
+  padding: 3.5rem 0 4rem;
+  overflow: hidden;
   background: #000;
 }
 
+.dp-audience__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #050505;
+  overflow: hidden;
+}
+
+.dp-audience__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/devenir-partenaire/miser-photo-3.jpg?v=2") 50% 28% / cover no-repeat;
+  opacity: 0.34;
+}
+
+.dp-audience__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.28) 45%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
 .dp-audience .section__inner {
+  position: relative;
+  z-index: 1;
   width: min(100% - 2rem, var(--max));
   margin-inline: auto;
 }
