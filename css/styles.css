@@ -2780,11 +2780,21 @@ a.partners-cr7__cell:focus-visible {
   box-sizing: border-box;
 }
 
+.dp-aud__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  margin: 0 0 0.85rem;
+  min-width: 0;
+}
+
 .dp-aud__logo {
   display: flex;
-  width: 6.75rem;
-  height: 6.75rem;
-  margin: 0 auto 1.15rem;
+  flex-shrink: 0;
+  width: 4.75rem;
+  height: 4.75rem;
+  margin: 0;
   border-radius: 0.35rem;
 }
 
@@ -2801,12 +2811,15 @@ a.partners-cr7__cell:focus-visible {
 }
 
 .dp-aud__brand {
-  margin: 0 0 0.45rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  margin: 0;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 4.5vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: #fff;
 }
 
 .dp-aud__num {
