@@ -14,7 +14,8 @@
   --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
   --nav-h: 3.6rem;
-  --hl-crop-b: 70px;
+  --hl-crop-t: 20px;
+  --hl-crop-b: 100px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --max: 72rem;
 }
@@ -301,7 +302,7 @@ select {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  height: calc(100cqw * 9 / 16 - var(--hl-crop-b));
+  height: calc(100cqw * 9 / 16 - var(--hl-crop-t) - var(--hl-crop-b));
   aspect-ratio: unset;
   min-height: 0;
   overflow: hidden;
@@ -314,10 +315,10 @@ select {
 .hl-card video,
 .hl-card__poster {
   position: absolute;
-  top: 0;
+  top: calc(var(--hl-crop-t) * -1);
   left: 0;
   width: 100%;
-  height: calc(100% + var(--hl-crop-b));
+  height: calc(100% + var(--hl-crop-t) + var(--hl-crop-b));
   object-fit: cover;
   object-position: top center;
   background: #000;
