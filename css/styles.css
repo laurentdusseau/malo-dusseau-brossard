@@ -299,8 +299,9 @@ select {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  height: min(78vh, 42rem);
-  min-height: 22rem;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
   overflow: hidden;
   scroll-snap-align: center;
   scroll-snap-stop: always;
@@ -594,14 +595,6 @@ select {
 }
 
 @media (max-width: 640px) {
-  .hl-card {
-    height: min(72vh, 34rem);
-  }
-
-  .section--medias .hl-card {
-    height: min(calc(100dvh - var(--nav-h) - 3.5rem), 34rem);
-  }
-
   .hl-strip__nav {
     width: 2.5rem;
     height: 2.5rem;
@@ -885,11 +878,6 @@ select {
   max-width: 100%;
   border-bottom: 0;
   padding-bottom: 1rem;
-}
-
-.section--medias .hl-card {
-  height: min(calc(100dvh - var(--nav-h) - 3.25rem), 42rem);
-  min-height: 18rem;
 }
 
 .media-block__head {
