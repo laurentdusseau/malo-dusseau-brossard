@@ -2833,7 +2833,7 @@ a.partners-cr7__cell:focus-visible {
 
 .dp-aud__chart {
   width: 100%;
-  margin: 4rem 0 0;
+  margin: 6rem 0 0;
   padding: 0;
 }
 
@@ -2851,7 +2851,7 @@ a.partners-cr7__cell:focus-visible {
 }
 
 .dp-aud__histo-label {
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.85rem;
   text-align: center;
   color: rgba(255, 255, 255, 0.78);
   font-size: 0.82rem;
