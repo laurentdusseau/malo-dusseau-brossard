@@ -492,18 +492,43 @@
     const bindSeamlessLoop = (video) => {
       if (!video || video.dataset.hlSeamless === "1") return;
       video.dataset.hlSeamless = "1";
-      video.loop = true;
+      video.loop = false;
+      video.removeAttribute("loop");
+      let jumping = false;
       const restart = () => {
-        if (video.currentTime < 0.2) return;
+        if (jumping || video.currentTime < 0.35) return;
+        jumping = true;
+        const resume = () => {
+          window.clearTimeout(watchdog);
+          const p = video.play();
+          const done = () => {
+            jumping = false;
+          };
+          if (p && typeof p.finally === "function") p.finally(done);
+          else done();
+        };
+        const watchdog = window.setTimeout(resume, 280);
         try {
-          video.currentTime = 0.05;
-        } catch (_) {}
-        video.play().catch(() => {});
+          if (video.seekable && video.seekable.length) {
+            video.currentTime = video.seekable.start(0);
+          } else {
+            video.currentTime = 0;
+          }
+        } catch (_) {
+          jumping = false;
+          video.play().catch(() => {});
+          return;
+        }
+        if (video.seeking) {
+          video.addEventListener("seeked", resume, { once: true });
+        } else {
+          resume();
+        }
       };
       video.addEventListener("timeupdate", () => {
         const d = video.duration;
-        if (!d || !Number.isFinite(d) || d < 0.5) return;
-        if (d - video.currentTime <= 0.1) restart();
+        if (!d || !Number.isFinite(d) || d < 0.8) return;
+        if (d - video.currentTime <= 0.28) restart();
       });
       video.addEventListener("ended", restart);
     };
@@ -516,13 +541,10 @@
       video.playsInline = true;
       video.setAttribute("playsinline", "");
       video.preload = "auto";
+      video.loop = false;
+      video.removeAttribute("loop");
       bindSeamlessLoop(video);
       applyMute(video, !wantSound);
-      if (video.readyState < 2) {
-        try {
-          video.load();
-        } catch (_) {}
-      }
       const playPromise = video.play();
       if (playPromise && typeof playPromise.then === "function") {
         playPromise
