@@ -89,11 +89,11 @@
     valence: [
       "assets/medias/2026_valence_1.jpeg",
       "assets/medias/2026_valence_2.jpeg",
+      "assets/medias/2026_valence_3.jpeg",
       "assets/medias/2026_valence_4.jpeg",
-      "assets/medias/2026_valence_5.jpeg",
+      "assets/medias/2026_valence_5.jpg",
       "assets/medias/2026_valence_6.jpg",
       "assets/medias/2026_valence_7.jpg",
-      "assets/medias/2026_valence_8.jpg",
     ],
     area47: [
       "assets/medias/2026_area47_1.jpg",
@@ -124,7 +124,7 @@
       "assets/medias/2025_loureira_1.jpg",
       "assets/medias/2025_loureira_2.jpeg",
       "assets/medias/2025_loureira_3.jpeg",
-      "assets/medias/2025_loureira_6.jpg",
+      "assets/medias/2025_loureira_4.jpg",
     ],
     monthey: [
       "assets/medias/2025_monthey_1.jpg",
@@ -412,10 +412,16 @@
         form.reset();
         if (msg) {
           msg.style.color = "var(--pink)";
-          msg.textContent = t(
-            "contact.form.ok",
-            "Message envoyé — merci, on vous répond vite."
-          );
+          msg.textContent =
+            typeKey === "partner"
+              ? t(
+                  "contact.form.ok.partner",
+                  "Message envoyé — le dossier de partenariat vous sera envoyé sous 24 h."
+                )
+              : t(
+                  "contact.form.ok",
+                  "Message envoyé — merci, on vous répond vite."
+                );
         }
       } catch (err) {
         if (msg) {
@@ -444,9 +450,13 @@
     const cards = Array.from(hlRoot.querySelectorAll("[data-hl-card]"));
     const prevBtn = hlRoot.querySelector("[data-hl-prev]");
     const nextBtn = hlRoot.querySelector("[data-hl-next]");
+    const soundBtn = hlRoot.querySelector("[data-hl-sound]");
     const dotsWrap = hlRoot.querySelector("[data-hl-dots]");
     let activeIndex = 0;
     let scrollTick = 0;
+    let userMoved = false;
+    let programScroll = false;
+    let wantSound = false;
 
     const dots = cards.map((_, i) => {
       const btn = document.createElement("button");
@@ -454,19 +464,60 @@
       btn.className = "hl-strip__dot" + (i === 0 ? " is-active" : "");
       btn.setAttribute("aria-label", `Highlight ${i + 1}`);
       btn.setAttribute("aria-current", i === 0 ? "true" : "false");
-      btn.addEventListener("click", () => goTo(i, true));
+      btn.addEventListener("click", () => goTo(i, true, true));
       dotsWrap.appendChild(btn);
       return btn;
     });
 
+    const applyMute = (video, muted) => {
+      if (!video) return;
+      video.muted = muted;
+      video.volume = muted ? 0 : 1;
+      if (muted) video.setAttribute("muted", "");
+      else video.removeAttribute("muted");
+    };
+
+    const syncSoundButton = () => {
+      if (!soundBtn) return;
+      soundBtn.classList.toggle("is-on", wantSound);
+      soundBtn.setAttribute("aria-pressed", wantSound ? "true" : "false");
+      const key = wantSound ? "hl.sound.off" : "hl.sound.on";
+      soundBtn.setAttribute("data-i18n-aria", key);
+      soundBtn.setAttribute(
+        "aria-label",
+        t(key, wantSound ? "Couper le son" : "Activer le son")
+      );
+    };
+
+    const bindSeamlessLoop = (video) => {
+      if (!video || video.dataset.hlSeamless === "1") return;
+      video.dataset.hlSeamless = "1";
+      video.loop = true;
+      const restart = () => {
+        if (video.currentTime < 0.2) return;
+        try {
+          video.currentTime = 0.05;
+        } catch (_) {}
+        video.play().catch(() => {});
+      };
+      video.addEventListener("timeupdate", () => {
+        const d = video.duration;
+        if (!d || !Number.isFinite(d) || d < 0.5) return;
+        if (d - video.currentTime <= 0.1) restart();
+      });
+      video.addEventListener("ended", restart);
+    };
+
+    cards.forEach((card) => bindSeamlessLoop(card.querySelector("video")));
+
     const tryPlay = (card) => {
       const video = card.querySelector("video");
       if (!video) return;
-      video.muted = true;
       video.playsInline = true;
       video.setAttribute("playsinline", "");
-      video.setAttribute("muted", "");
       video.preload = "auto";
+      bindSeamlessLoop(video);
+      applyMute(video, !wantSound);
       if (video.readyState < 2) {
         try {
           video.load();
@@ -475,8 +526,21 @@
       const playPromise = video.play();
       if (playPromise && typeof playPromise.then === "function") {
         playPromise
-          .then(() => card.classList.add("is-playing"))
-          .catch(() => card.classList.remove("is-playing"));
+          .then(() => {
+            applyMute(video, !wantSound);
+            card.classList.add("is-playing");
+          })
+          .catch(() => {
+            if (wantSound) {
+              applyMute(video, true);
+              video
+                .play()
+                .then(() => card.classList.add("is-playing"))
+                .catch(() => card.classList.remove("is-playing"));
+            } else {
+              card.classList.remove("is-playing");
+            }
+          });
       }
       video.addEventListener(
         "playing",
@@ -492,6 +556,7 @@
       const video = card.querySelector("video");
       if (!video) return;
       video.pause();
+      applyMute(video, true);
       card.classList.remove("is-playing");
     };
 
@@ -513,12 +578,26 @@
       if (nextBtn) nextBtn.disabled = activeIndex === cards.length - 1;
     };
 
-    const goTo = (index, smooth) => {
-      const target = cards[Math.max(0, Math.min(index, cards.length - 1))];
+    const goTo = (index, smooth, fromUser = false) => {
+      if (fromUser) userMoved = true;
+      const clamped = Math.max(0, Math.min(index, cards.length - 1));
+      const target = cards[clamped];
       if (!target || !rail) return;
+      programScroll = true;
+      window.clearTimeout(scrollTick);
       const left = target.offsetLeft;
       rail.scrollTo({ left, behavior: smooth ? "smooth" : "auto" });
-      setActive(index);
+      setActive(clamped);
+      const deadline = Date.now() + 900;
+      const unlock = () => {
+        const arrived = Math.abs(rail.scrollLeft - left) < 12;
+        if (arrived || Date.now() > deadline) {
+          programScroll = false;
+          return;
+        }
+        window.requestAnimationFrame(unlock);
+      };
+      window.requestAnimationFrame(unlock);
     };
 
     const nearestIndex = () => {
@@ -541,11 +620,14 @@
       rail.addEventListener(
         "scroll",
         () => {
+          if (programScroll) return;
+          if (rail.scrollLeft > 24) userMoved = true;
           window.clearTimeout(scrollTick);
           scrollTick = window.setTimeout(() => {
+            if (programScroll) return;
             const idx = nearestIndex();
             if (idx !== activeIndex) setActive(idx);
-          }, 60);
+          }, 140);
         },
         { passive: true }
       );
@@ -553,19 +635,35 @@
       rail.addEventListener("keydown", (e) => {
         if (e.key === "ArrowLeft") {
           e.preventDefault();
-          goTo(activeIndex - 1, true);
+          goTo(activeIndex - 1, true, true);
         } else if (e.key === "ArrowRight") {
           e.preventDefault();
-          goTo(activeIndex + 1, true);
+          goTo(activeIndex + 1, true, true);
         }
       });
     }
 
-    if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1, true));
-    if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1, true));
+    if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1, true, true));
+    if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1, true, true));
+
+    if (soundBtn) {
+      soundBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        wantSound = !wantSound;
+        const active = cards[activeIndex];
+        const video = active?.querySelector("video");
+        applyMute(video, !wantSound);
+        if (wantSound && video) {
+          video.play().catch(() => {});
+        }
+        syncSoundButton();
+      });
+      syncSoundButton();
+    }
 
     /* Toujours démarrer sur Valence (1re carte), jamais sur Saint-Galmier */
     const bootValence = () => {
+      if (userMoved) return;
       if (rail) rail.scrollLeft = 0;
       goTo(0, false);
     };
@@ -613,6 +711,40 @@
     partnersGrid.addEventListener("touchend", clearLit, { passive: true });
     partnersGrid.addEventListener("touchcancel", clearLit, { passive: true });
   }
+
+  document.querySelectorAll("[data-palmares-tabs]").forEach((root) => {
+    const buttons = Array.from(root.querySelectorAll("[data-palmares-tab]"));
+    const panels = Array.from(root.querySelectorAll("[data-palmares-panel]"));
+    if (!buttons.length || !panels.length) return;
+
+    const show = (key) => {
+      buttons.forEach((btn) => {
+        const on = btn.getAttribute("data-palmares-tab") === key;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-selected", on ? "true" : "false");
+        btn.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        const on = panel.getAttribute("data-palmares-panel") === key;
+        panel.toggleAttribute("hidden", !on);
+      });
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => show(btn.getAttribute("data-palmares-tab")));
+      btn.addEventListener("keydown", (e) => {
+        const i = buttons.indexOf(btn);
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          const next = e.key === "ArrowRight"
+            ? buttons[(i + 1) % buttons.length]
+            : buttons[(i - 1 + buttons.length) % buttons.length];
+          show(next.getAttribute("data-palmares-tab"));
+          next.focus();
+        }
+      });
+    });
+  });
 
   const closeMaillotHints = (keep) => {
     document.querySelectorAll(".dp-maillot-hint.is-open").forEach((wrap) => {
