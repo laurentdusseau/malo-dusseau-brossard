@@ -2621,20 +2621,29 @@ a.partners-cr7__cell:focus-visible {
   gap: 1.45rem;
   width: 100%;
   margin: 0 0 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dp-aud__head:hover .dp-aud__logo,
+.dp-aud__head:hover .dp-aud__brand,
+.dp-aud__head:focus-visible .dp-aud__logo,
+.dp-aud__head:focus-visible .dp-aud__brand {
+  filter: brightness(1.12);
+}
+
+.dp-aud__head:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 4px;
 }
 
 .dp-aud__logo {
   display: flex;
+  flex-shrink: 0;
   width: 3.4rem;
   height: 3.4rem;
   margin: 0;
   border-radius: 0.35rem;
-}
-
-.dp-aud__logo:hover,
-.dp-aud__logo:focus-visible {
-  outline: none;
-  filter: brightness(1.12);
 }
 
 .dp-aud__logo svg {
