@@ -51,15 +51,13 @@
       "dp.aud.title": "Une visibilité qui se mesure",
       "dp.aud.lead":
         "Pékin ouvre le rêve. Ces chiffres ouvrent le dossier. Une PME de Bordeaux n’achète pas seulement un maillot arc-en-ciel : elle achète aussi des vues ici.",
-      "dp.aud.yt": "abonnés YouTube",
-      "dp.aud.yt.meta": "actuel · +1,6 k en 2026",
-      "dp.aud.v26": "vues YouTube 2026",
-      "dp.aud.v26.meta": "au 13 sept. · 5,3 k heures",
-      "dp.aud.v25": "vues YouTube 2025",
-      "dp.aud.v25.meta": "année complète · 3,4 k heures",
-      "dp.aud.tt": "abonnés TikTok",
+      "dp.aud.yt": "abonnés",
+      "dp.aud.yt.meta": "1,2 M vues en 2026 · 600 k en 2025",
+      "dp.aud.tt": "abonnés",
+      "dp.aud.ig": "profil",
+      "dp.aud.ig.meta": "même ligne que YouTube / TikTok",
       "dp.aud.note":
-        "YouTube Studio — 2025 : 599&nbsp;616 vues · 3,4&nbsp;k&nbsp;h · +867 abonnés. 2026 (au 13 sept.) : 1&nbsp;200&nbsp;360 vues · 5,3&nbsp;k&nbsp;h · +1,6&nbsp;k abonnés. Instagram <a href=\"https://www.instagram.com/malo_62d/\" target=\"_blank\" rel=\"noopener\">@malo_62d</a> — Pessac · Bordeaux.",
+        "YouTube Studio — 2025 : 599&nbsp;616 vues · 3,4&nbsp;k&nbsp;h · +867 abonnés. 2026 (au 13 sept.) : 1&nbsp;200&nbsp;360 vues · 5,3&nbsp;k&nbsp;h · +1,6&nbsp;k abonnés.",
       "dp.need.title": "Les besoins de Malo",
       "dp.need.lead":
         "Un accompagnement concret pour viser Pékin 2026, puis les Mondiaux en France en 2027",
@@ -245,15 +243,13 @@
       "dp.aud.title": "Visibility you can measure",
       "dp.aud.lead":
         "Beijing sells the dream. These numbers sell the media buy. A Bordeaux SME doesn’t buy the rainbow jersey alone — it also buys local views.",
-      "dp.aud.yt": "YouTube subscribers",
-      "dp.aud.yt.meta": "current · +1.6k in 2026",
-      "dp.aud.v26": "YouTube views 2026",
-      "dp.aud.v26.meta": "as of 13 Sept. · 5.3k hours",
-      "dp.aud.v25": "YouTube views 2025",
-      "dp.aud.v25.meta": "full year · 3.4k hours",
-      "dp.aud.tt": "TikTok followers",
+      "dp.aud.yt": "subscribers",
+      "dp.aud.yt.meta": "1.2M views in 2026 · 600k in 2025",
+      "dp.aud.tt": "followers",
+      "dp.aud.ig": "profile",
+      "dp.aud.ig.meta": "same line as YouTube / TikTok",
       "dp.aud.note":
-        "YouTube Studio — 2025: 599,616 views · 3.4k hours · +867 subscribers. 2026 (as of 13 Sept.): 1,200,360 views · 5.3k hours · +1.6k subscribers. Instagram <a href=\"https://www.instagram.com/malo_62d/\" target=\"_blank\" rel=\"noopener\">@malo_62d</a> — Pessac · Bordeaux.",
+        "YouTube Studio — 2025: 599,616 views · 3.4k hours · +867 subscribers. 2026 (as of 13 Sept.): 1,200,360 views · 5.3k hours · +1.6k subscribers.",
       "dp.need.title": "What Malo needs",
       "dp.need.lead":
         "Concrete support to aim for Beijing 2026, then the Worlds in France in 2027",
