@@ -19,6 +19,14 @@ _old_*/
 photos/
 **/LIRE-MOI.txt
 
+# Sources vidéo lourdes (garder les .mp4 web sans _1)
+assets/medias/*.mov
+assets/medias/2024_saintgalmier_1.mp4
+assets/medias/2025_bouxwiller_1.mp4
+assets/medias/2026_valence_1.mp4
+assets/medias/2025_loureira_1.mp4
+assets/medias/copy_*.mov
+
 # Logs
 *.log
 Logs/

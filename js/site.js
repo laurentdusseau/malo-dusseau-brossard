@@ -683,15 +683,15 @@
       syncSoundButton();
     }
 
-    /* Toujours démarrer sur Valence (1re carte), jamais sur Saint-Galmier */
-    const bootValence = () => {
+    /* Toujours démarrer sur la 1re carte (Loureira) */
+    const bootFirst = () => {
       if (userMoved) return;
       if (rail) rail.scrollLeft = 0;
       goTo(0, false);
     };
-    bootValence();
-    requestAnimationFrame(bootValence);
-    window.addEventListener("load", bootValence, { once: true });
+    bootFirst();
+    requestAnimationFrame(bootFirst);
+    window.addEventListener("load", bootFirst, { once: true });
   }
 
   /* Partenaires — survol tactile (doigt qui glisse) = même lumière / zoom qu’au hover desktop */

@@ -400,6 +400,11 @@ select {
   object-position: 50% 42%;
 }
 
+.hl-card--loureira video,
+.hl-card--loureira .hl-card__poster {
+  object-position: 50% 40%;
+}
+
 @media (max-width: 768px) {
   .hl-card--landscape video,
   .hl-card--landscape .hl-card__poster {
