@@ -395,6 +395,11 @@ select {
   object-position: 42% 40%;
 }
 
+.hl-card--valence video,
+.hl-card--valence .hl-card__poster {
+  object-position: 50% 42%;
+}
+
 @media (max-width: 768px) {
   .hl-card--landscape video,
   .hl-card--landscape .hl-card__poster {
@@ -485,104 +490,6 @@ select {
   text-shadow: none;
 }
 
-/* Valence — vidéo inchangée (alignée H) | photo à partir de 50% largeur */
-.hl-card--valence .hl-card__stage {
-  position: relative;
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  margin: 0;
-  gap: 0;
-  padding: 0;
-}
-
-.hl-card--valence .hl-card__media {
-  position: absolute;
-  left: max(1rem, calc((100% - var(--max)) / 2));
-  top: 0;
-  z-index: 1;
-  flex: none;
-  height: 100%;
-  width: auto;
-  aspect-ratio: 9 / 16;
-  max-height: 100%;
-  display: block;
-  background: #000;
-}
-
-/* Cadre 9:16 fixe — pas de compression horizontale */
-.hl-card--valence .hl-card__media video,
-.hl-card--valence .hl-card__media .hl-card__poster {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  aspect-ratio: auto;
-  object-fit: contain;
-  object-position: center center;
-}
-
-.hl-card--valence .hl-card__label {
-  position: absolute;
-  left: 50%;
-  right: max(1rem, calc((100% - var(--max)) / 2));
-  top: 0;
-  bottom: 0;
-  z-index: 1;
-  flex: none;
-  width: auto;
-  min-width: 0;
-  height: auto;
-  margin: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: clamp(1.25rem, 3vw, 2.75rem);
-  padding-bottom: clamp(1.75rem, 4.5vh, 3rem);
-  padding-left: 1.35rem;
-  box-sizing: border-box;
-  overflow: hidden;
-  text-align: left;
-  background: #000;
-}
-
-.hl-card--valence .hl-card__label-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  transform: none;
-  object-fit: cover;
-  object-position: center 40%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.68;
-}
-
-.hl-card--valence .hl-card__label-shade {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.6) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
-}
-
-.hl-card--valence .hl-card__label-copy {
-  position: relative;
-  z-index: 2;
-  max-width: 22rem;
-  margin-left: 0.65rem;
-}
-
-.hl-card--valence .hl-card__eyebrow,
-.hl-card--valence .hl-card__title {
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85), 0 0 2px rgba(0, 0, 0, 0.95);
-}
-
 @media (max-width: 768px) {
   .hl-card--portrait .hl-card__stage {
     flex-direction: column;
@@ -605,58 +512,6 @@ select {
 
   .hl-card--portrait .hl-card__title {
     white-space: normal;
-  }
-
-  .hl-card--valence .hl-card__stage {
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    gap: 0;
-    padding: 0;
-  }
-
-  .hl-card--valence .hl-card__media {
-    position: relative;
-    left: auto;
-    top: auto;
-    flex: 1 1 58%;
-    width: min(78vw, 18rem);
-    height: auto;
-    max-height: min(58%, 26rem);
-    aspect-ratio: 9 / 16;
-    margin-inline: auto;
-  }
-
-  .hl-card--valence .hl-card__media video,
-  .hl-card--valence .hl-card__media .hl-card__poster {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .hl-card--valence .hl-card__label {
-    position: relative;
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: auto;
-    flex: 0 0 42%;
-    width: 100%;
-    height: auto;
-    min-height: 9.5rem;
-    justify-content: center;
-    text-align: center;
-    padding: 1.25rem 1rem;
-  }
-
-  .hl-card--valence .hl-card__label-bg {
-    object-position: center 40%;
-  }
-
-  .hl-card--valence .hl-card__label-copy {
-    max-width: none;
-    margin-left: 0;
   }
 }
 
@@ -2713,36 +2568,15 @@ a.partners-cr7__cell:focus-visible {
   position: relative;
   padding: 3.5rem 0 4rem;
   overflow: hidden;
-  background: #000;
+  background: #2a2a2e;
 }
 
 .dp-audience__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #050505;
   overflow: hidden;
-}
-
-.dp-audience__bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../assets/devenir-partenaire/miser-photo-3.jpg?v=2") 50% 28% / cover no-repeat;
-  opacity: 0.34;
-}
-
-.dp-audience__bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.42) 0%,
-    rgba(0, 0, 0, 0.28) 45%,
-    rgba(0, 0, 0, 0.55) 100%
-  );
-  pointer-events: none;
+  background: linear-gradient(180deg, #3c3c42 0%, #2c2c32 48%, #1f1f24 100%);
 }
 
 .dp-audience .section__inner {
