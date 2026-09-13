@@ -2673,29 +2673,12 @@ a.partners-cr7__cell:focus-visible {
   margin-inline: auto;
 }
 
-.dp-audience__kicker {
-  margin: 0 0 0.45rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--dp-red);
-}
-
 .dp-audience__title {
-  margin: 0 0 0.7rem;
+  margin: 0 0 1.75rem;
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   letter-spacing: 0.03em;
   line-height: 0.95;
-}
-
-.dp-audience__lead {
-  margin: 0 0 1.75rem;
-  max-width: 46rem;
-  font-size: clamp(1.02rem, 1.6vw, 1.16rem);
-  line-height: 1.48;
-  color: rgba(255, 255, 255, 0.88);
 }
 
 .dp-audience__grid {

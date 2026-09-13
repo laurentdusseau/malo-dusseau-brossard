@@ -47,10 +47,7 @@
       "dp.miser.c4.t": "Un cap net",
       "dp.miser.c4.p":
         "Il sait où il va. Pékin, puis France 2027 : un projet carré, une tête claire — pas une envie floue.",
-      "dp.aud.kicker": "Chiffres d’audience",
       "dp.aud.title": "Une visibilité qui se mesure",
-      "dp.aud.lead":
-        "Pékin ouvre le rêve. Ces chiffres ouvrent le dossier. Une PME de Bordeaux n’achète pas seulement un maillot arc-en-ciel : elle achète aussi des vues ici.",
       "dp.aud.yt": "abonnés",
       "dp.aud.yt.meta": "1,2 M vues en 2026 · 600 k en 2025",
       "dp.aud.tt": "abonnés",
@@ -239,10 +236,7 @@
       "dp.miser.c4.t": "A clear heading",
       "dp.miser.c4.p":
         "He knows where he’s going. Beijing, then France 2027: a clear plan, a clear head — not a vague wish.",
-      "dp.aud.kicker": "Audience figures",
       "dp.aud.title": "Visibility you can measure",
-      "dp.aud.lead":
-        "Beijing sells the dream. These numbers sell the media buy. A Bordeaux SME doesn’t buy the rainbow jersey alone — it also buys local views.",
       "dp.aud.yt": "subscribers",
       "dp.aud.yt.meta": "1.2M views in 2026 · 600k in 2025",
       "dp.aud.tt": "followers",
