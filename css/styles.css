@@ -2615,10 +2615,10 @@ a.partners-cr7__cell:focus-visible {
 }
 
 .dp-aud__head {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  column-gap: 0.7rem;
+  gap: 1.45rem;
   width: 100%;
   margin: 0 0 0.85rem;
 }
@@ -2650,7 +2650,6 @@ a.partners-cr7__cell:focus-visible {
 
 .dp-aud__brand {
   margin: 0;
-  justify-self: start;
   text-align: left;
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 3.2vw, 3.6rem);
