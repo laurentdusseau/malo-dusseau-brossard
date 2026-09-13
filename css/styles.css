@@ -2643,6 +2643,11 @@ a.partners-cr7__cell:focus-visible {
   height: 100%;
 }
 
+.dp-aud__logo--yt svg {
+  transform: scale(1.2);
+  transform-origin: center;
+}
+
 .dp-aud__brand {
   margin: 0;
   justify-self: start;
@@ -2655,6 +2660,20 @@ a.partners-cr7__cell:focus-visible {
   text-transform: uppercase;
   white-space: nowrap;
   color: #fff;
+}
+
+.dp-aud__brand--ig {
+  background: linear-gradient(115deg, #f9ce34 0%, #ee2a7b 42%, #6228d7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dp-aud__brand--yt {
+  background: linear-gradient(115deg, #ff4d4d 0%, #ff0000 48%, #c80000 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .dp-aud__num {
