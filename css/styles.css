@@ -14,8 +14,8 @@
   --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
   --nav-h: 3.6rem;
-  --hl-crop-t: 20px;
-  --hl-crop-b: 100px;
+  --hl-crop-t: 40px;
+  --hl-crop-b: 130px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --max: 72rem;
 }
