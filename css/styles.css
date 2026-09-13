@@ -2796,32 +2796,34 @@ a.partners-cr7__cell:focus-visible {
 }
 
 .dp-aud__shot-zoom {
-  position: absolute;
-  left: calc(100% + 0.85rem);
-  top: 0;
-  z-index: 30;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 80;
   width: min(24rem, 56vw);
+  max-height: 90vh;
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: #000;
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.72);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(-6px);
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  transform: translateY(-50%);
+  transition: opacity 0.15s ease, visibility 0.15s;
 }
 
 .dp-aud__shot-zoom img {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 90vh;
+  object-fit: contain;
 }
 
 .dp-aud__shot:hover .dp-aud__shot-zoom,
 .dp-aud__shot:focus-within .dp-aud__shot-zoom {
   opacity: 1;
   visibility: visible;
-  transform: translateX(0);
 }
 
 .dp-aud__shot-open:focus-visible {

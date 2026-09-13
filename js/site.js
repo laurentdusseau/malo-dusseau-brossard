@@ -694,6 +694,25 @@
     window.addEventListener("load", bootFirst, { once: true });
   }
 
+  document.querySelectorAll(".dp-aud__shot").forEach((shot) => {
+    const zoom = shot.querySelector(".dp-aud__shot-zoom");
+    if (!zoom) return;
+    const place = () => {
+      const box = shot.getBoundingClientRect();
+      const gap = 14;
+      const width = zoom.offsetWidth || 384;
+      let left = box.right + gap;
+      if (left + width > window.innerWidth - 12) {
+        left = Math.max(12, window.innerWidth - width - 12);
+      }
+      zoom.style.left = `${Math.round(left)}px`;
+    };
+    shot.addEventListener("mouseenter", place);
+    shot.addEventListener("focusin", place);
+    window.addEventListener("resize", place);
+    window.addEventListener("scroll", place, { passive: true });
+  });
+
   /* Partenaires — survol tactile (doigt qui glisse) = même lumière / zoom qu’au hover desktop */
   const partnersGrid = document.querySelector(".partners-cr7__grid");
   if (partnersGrid) {
