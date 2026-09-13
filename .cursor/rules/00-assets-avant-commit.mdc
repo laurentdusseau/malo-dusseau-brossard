@@ -1,0 +1,21 @@
+---
+description: Interdit de committer une référence d’asset absente de Git (casse la prod)
+alwaysApply: true
+---
+
+# Assets — vérif obligatoire avant commit
+
+Un HTML/CSS/JS qui pointe vers un fichier **absent de Git** casse le site en prod (local OK, prod 404). **Interdit.**
+
+**Avant tout `git commit` :**
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/check-assets.ps1
+```
+
+- Exit 0 seulement → alors commit.
+- Exit 1 → **pas de commit**. `git add` l’asset **dans le même commit** que la référence, puis relancer le script.
+- Ne pas se fier au disque local : `git ls-files` / index.
+- Changement d’extension (`.png` → `.jpg`) = **ajouter le nouveau fichier**, pas seulement le chemin.
+
+Anti-exemple : `index.html` → `malo_cover_tribune.jpg` commitée, le `.jpg` non versionné → fond noir en prod.

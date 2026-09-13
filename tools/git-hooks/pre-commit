@@ -1,0 +1,5 @@
+#!/bin/sh
+# Bloque le commit si un asset reference n'est pas dans Git.
+root="$(git rev-parse --show-toplevel)"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$root/tools/check-assets.ps1"
+exit $?
