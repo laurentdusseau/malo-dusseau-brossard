@@ -271,6 +271,7 @@ select {
   padding: 0 0 1.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
+  container-type: inline-size;
 }
 
 .hl-strip__stage {
@@ -299,8 +300,8 @@ select {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: calc(100cqw * 9 / 16 - 20px);
+  aspect-ratio: unset;
   min-height: 0;
   overflow: hidden;
   scroll-snap-align: center;
@@ -312,11 +313,12 @@ select {
 .hl-card video,
 .hl-card__poster {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center center;
+  height: calc(100% + 20px);
+  object-fit: cover;
+  object-position: top center;
   background: #000;
   z-index: -2;
   transition: opacity 0.45s var(--ease);
