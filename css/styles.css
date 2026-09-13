@@ -2722,32 +2722,35 @@ a.partners-cr7__cell:focus-visible {
   margin: 0;
   padding-top: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.4vw, 3.5rem);
-  line-height: 0.92;
+  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  line-height: 1.05;
   letter-spacing: 0.02em;
   color: #fff;
 }
 
 .dp-aud__num--word {
-  font-size: clamp(1.55rem, 2.8vw, 2.15rem);
   letter-spacing: 0.01em;
 }
 
 .dp-aud__label {
   margin: 0;
-  font-size: 0.92rem;
-  font-weight: 800;
-  letter-spacing: 0.07em;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #fff;
   white-space: nowrap;
+  line-height: 1.05;
 }
 
 .dp-aud__meta {
-  margin: 0.35rem 0 0;
+  margin: 0.45rem 0 0;
   color: #fff;
-  font-size: 0.88rem;
-  line-height: 1.35;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
   overflow-wrap: anywhere;
 }
 
