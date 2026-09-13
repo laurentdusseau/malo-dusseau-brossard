@@ -379,16 +379,25 @@ select {
   opacity: 0;
 }
 
-/* Saint-Galmier — 16:9 large : garder le pilote (droite / bande centrale) */
+/* Vidéos 16:9 — desktop cover, mobile contain (carte trop haute sinon) */
+.hl-card--landscape video,
+.hl-card--landscape .hl-card__poster {
+  object-position: 50% 40%;
+}
+
 .hl-card--saintgalmier video,
 .hl-card--saintgalmier .hl-card__poster {
   object-position: 68% 42%;
 }
 
+.hl-card--bouxwiller video,
+.hl-card--bouxwiller .hl-card__poster {
+  object-position: 42% 40%;
+}
+
 @media (max-width: 768px) {
-  /* Carte haute : cover coupe le pilote. Contenir le 16:9 entier. */
-  .hl-card--saintgalmier video,
-  .hl-card--saintgalmier .hl-card__poster {
+  .hl-card--landscape video,
+  .hl-card--landscape .hl-card__poster {
     object-fit: contain;
     object-position: center center;
     background: #000;
@@ -2692,7 +2701,8 @@ a.partners-cr7__cell:focus-visible {
 .dp-audience__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  gap: clamp(0.7rem, 1.6vw, 1.15rem);
+  align-items: stretch;
 }
 
 .dp-aud {
@@ -2700,10 +2710,12 @@ a.partners-cr7__cell:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
+  min-height: 20rem;
   margin: 0;
-  padding: 1.35rem 1.15rem 1.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem 1.25rem 1.55rem;
+  border: 3px solid rgba(255, 255, 255, 0.78);
+  background: rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
 }
 
 .dp-aud__logo {
