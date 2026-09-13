@@ -2781,19 +2781,18 @@ a.partners-cr7__cell:focus-visible {
 }
 
 .dp-aud__head {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 0.75rem 1rem;
+  column-gap: 0.7rem;
   width: 100%;
   margin: 0 0 0.85rem;
-  min-width: 0;
 }
 
 .dp-aud__logo {
   display: flex;
-  flex-shrink: 0;
-  width: 4.75rem;
-  height: 4.75rem;
+  width: 3.4rem;
+  height: 3.4rem;
   margin: 0;
   border-radius: 0.35rem;
 }
@@ -2812,13 +2811,15 @@ a.partners-cr7__cell:focus-visible {
 
 .dp-aud__brand {
   margin: 0;
-  min-width: 0;
+  justify-self: start;
+  text-align: left;
   font-family: var(--font-display);
-  font-size: clamp(2.7rem, 4.5vw, 3.6rem);
+  font-size: clamp(2.4rem, 3.2vw, 3.6rem);
   font-weight: 400;
-  line-height: 1;
+  line-height: 0.9;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: #fff;
 }
 
@@ -2904,7 +2905,7 @@ a.partners-cr7__cell:focus-visible {
   position: absolute;
   inset: 0;
   background: url("../assets/devenir-partenaire/bg-besoins-wheels.jpg?v=3") 50% 48% / contain no-repeat;
-  opacity: 0.38;
+  opacity: 0.55;
 }
 
 .dp-besoins__bg::after {
