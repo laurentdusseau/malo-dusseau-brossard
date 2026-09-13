@@ -683,7 +683,7 @@
       syncSoundButton();
     }
 
-    /* Toujours démarrer sur la 1re carte (Loureira) */
+    /* Toujours démarrer sur la 1re carte (Valence) */
     const bootFirst = () => {
       if (userMoved) return;
       if (rail) rail.scrollLeft = 0;
