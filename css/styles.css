@@ -2601,6 +2601,14 @@ a.partners-cr7__cell:focus-visible {
   align-items: stretch;
 }
 
+.dp-audience__note {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+}
+
 .dp-aud {
   display: flex;
   flex-direction: column;

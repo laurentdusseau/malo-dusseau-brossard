@@ -55,6 +55,7 @@
       "dp.aud.yt.chart.subs": "Abonnés",
       "dp.aud.tt": "abonnés",
       "dp.aud.ig": "followers",
+      "dp.aud.note": "D’autres métriques détaillées sont disponibles sur demande.",
       "dp.need.title": "Les besoins de Malo",
       "dp.need.lead":
         "Un accompagnement concret pour viser Pékin 2026, puis les Mondiaux en France en 2027",
@@ -246,6 +247,7 @@
       "dp.aud.yt.chart.subs": "Subscribers",
       "dp.aud.tt": "followers",
       "dp.aud.ig": "followers",
+      "dp.aud.note": "Additional detailed metrics are available on request.",
       "dp.need.title": "What Malo needs",
       "dp.need.lead":
         "Concrete support to aim for Beijing 2026, then the Worlds in France in 2027",
