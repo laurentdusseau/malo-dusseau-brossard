@@ -2645,7 +2645,7 @@ a.partners-cr7__cell:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.45rem;
+  gap: 1.1rem;
   width: 100%;
   margin: 0 0 0.85rem;
   text-decoration: none;
@@ -2667,8 +2667,8 @@ a.partners-cr7__cell:focus-visible {
 .dp-aud__logo {
   display: flex;
   flex-shrink: 0;
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 2.85rem;
+  height: 2.85rem;
   margin: 0;
   border-radius: 0.35rem;
 }
@@ -2680,7 +2680,7 @@ a.partners-cr7__cell:focus-visible {
 }
 
 .dp-aud__logo--yt svg {
-  transform: scale(1.2);
+  transform: scale(1.12);
   transform-origin: center;
 }
 
@@ -2688,7 +2688,7 @@ a.partners-cr7__cell:focus-visible {
   margin: 0;
   text-align: left;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 3.2vw, 3.6rem);
+  font-size: clamp(2.05rem, 2.7vw, 3.05rem);
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: 0.03em;
@@ -2733,7 +2733,7 @@ a.partners-cr7__cell:focus-visible {
   margin: 0;
   padding-top: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  font-size: clamp(1.49rem, 2.52vw, 1.94rem);
   line-height: 1.05;
   letter-spacing: 0.02em;
   color: #fff;
@@ -2746,7 +2746,7 @@ a.partners-cr7__cell:focus-visible {
 .dp-aud__label {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  font-size: clamp(1.49rem, 2.52vw, 1.94rem);
   font-weight: 400;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -2759,7 +2759,7 @@ a.partners-cr7__cell:focus-visible {
   margin: 0.45rem 0 0;
   color: #fff;
   font-family: var(--font-display);
-  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  font-size: clamp(1.49rem, 2.52vw, 1.94rem);
   line-height: 1.15;
   letter-spacing: 0.02em;
   overflow-wrap: anywhere;
