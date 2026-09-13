@@ -2568,7 +2568,7 @@ a.partners-cr7__cell:focus-visible {
   position: relative;
   padding: 3.5rem 0 7.5rem;
   overflow: hidden;
-  background: #2a2a2e;
+  background: #0c0c0e;
 }
 
 .dp-audience__bg {
@@ -2576,7 +2576,7 @@ a.partners-cr7__cell:focus-visible {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #3c3c42 0%, #2c2c32 48%, #1f1f24 100%);
+  background: linear-gradient(180deg, #141416 0%, #0c0c0e 48%, #080808 100%);
 }
 
 .dp-audience .section__inner {
