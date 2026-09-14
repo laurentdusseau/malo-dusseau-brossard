@@ -142,9 +142,9 @@
       "assets/medias/2025_ainsa_4.webp",
     ],
     saintgalmier: [
-      "assets/medias/2024_saintgalmier_1.jpg",
-      "assets/medias/2024_saintgalmier_2.jpg",
-      "assets/medias/2024_saintgalmier_3.jpg",
+      "assets/medias/2024_saintgalmier_1.jpg?v=20260914sg",
+      "assets/medias/2024_saintgalmier_2.jpg?v=20260914sg",
+      "assets/medias/2024_saintgalmier_3.jpg?v=20260914sg",
     ],
     bouxwiller: [
       "assets/medias/2025_bouxwiller_1.jpg?v=20260912",
