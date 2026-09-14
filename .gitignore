@@ -18,6 +18,7 @@ _ppt_pages/
 _old_*/
 photos/
 **/LIRE-MOI.txt
+assets/medias/*_old.*
 
 # Sources vidéo lourdes (garder les .mp4 web sans _1)
 assets/medias/*.mov

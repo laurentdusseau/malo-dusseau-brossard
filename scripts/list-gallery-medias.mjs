@@ -9,7 +9,7 @@ import { fileURLToPath } from "url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const medias = path.join(root, "assets/medias");
-const OLD = /(?:^|[_\-.])old(?:[_\-.]|$)/i;
+const OLD = /_old/i;
 const IMAGE = /\.(jpe?g|png|webp)$/i;
 const SKIP = /(?:_poster|\.mp4$)/i;
 

@@ -82,7 +82,7 @@
   });
 
   const isOldMedia = (src) =>
-    /(?:^|[_\-.])old(?:[_\-.]|$)/i.test(String(src).split("/").pop() || "");
+    /_old/i.test(String(src).split("/").pop() || "");
   const galleryPhotos = (list) => (list || []).filter((src) => src && !isOldMedia(src));
 
   const EVENT_GALLERIES = {
