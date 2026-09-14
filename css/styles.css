@@ -14,8 +14,6 @@
   --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
   --nav-h: 3.6rem;
-  --hl-crop-t: 40px;
-  --hl-crop-b: 130px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --max: 72rem;
 }
@@ -273,7 +271,6 @@ select {
   padding: 0 0 1.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
-  container-type: inline-size;
 }
 
 .hl-strip__stage {
@@ -302,8 +299,8 @@ select {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  height: calc(100cqw * 9 / 16 - var(--hl-crop-t) - var(--hl-crop-b));
-  aspect-ratio: unset;
+  height: auto;
+  aspect-ratio: 16 / 9;
   min-height: 0;
   overflow: hidden;
   scroll-snap-align: center;
@@ -315,12 +312,11 @@ select {
 .hl-card video,
 .hl-card__poster {
   position: absolute;
-  top: calc(var(--hl-crop-t) * -1);
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: calc(100% + var(--hl-crop-t) + var(--hl-crop-b));
+  height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
   background: #000;
   z-index: -2;
   transition: opacity 0.45s var(--ease);
@@ -599,22 +595,9 @@ select {
 }
 
 @media (max-width: 768px) {
-  :root {
-    --hl-crop-t: 0px;
-    --hl-crop-b: 0px;
-  }
-
-  .hl-card {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-
   .hl-card video,
   .hl-card__poster {
-    top: 0;
-    height: 100%;
     object-fit: contain;
-    object-position: center center;
   }
 
   .hl-card__title {
@@ -911,9 +894,9 @@ select {
 }
 
 .section--medias .hl-strip {
-  margin-inline: 0;
-  width: 100%;
-  max-width: 100%;
+  width: min(100% - 2rem, var(--max));
+  max-width: var(--max);
+  margin-inline: auto;
   border-bottom: 0;
   padding-bottom: 1rem;
 }
