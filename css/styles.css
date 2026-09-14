@@ -335,9 +335,9 @@ select {
 .hl-card__label {
   position: absolute;
   left: clamp(1.25rem, 4vw, 3rem);
-  right: clamp(1.25rem, 4vw, 3rem);
+  right: 5.75rem;
   bottom: clamp(1.5rem, 4vh, 2.75rem);
-  max-width: 36rem;
+  max-width: none;
 }
 
 .hl-card__eyebrow {
@@ -358,6 +358,7 @@ select {
   line-height: 0.92;
   color: #fff;
   text-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
 }
 
 .hl-card.is-playing .hl-card__poster {
