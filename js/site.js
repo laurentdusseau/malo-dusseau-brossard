@@ -87,10 +87,10 @@
 
   const EVENT_GALLERIES = {
     valence: [
-      "assets/medias/2026_valence_1.jpeg",
-      "assets/medias/2026_valence_2.jpeg",
-      "assets/medias/2026_valence_3.jpeg",
-      "assets/medias/2026_valence_4.jpeg",
+      "assets/medias/2026_valence_1.jpeg?v=20260915",
+      "assets/medias/2026_valence_2.jpeg?v=20260915",
+      "assets/medias/2026_valence_3.jpeg?v=20260915",
+      "assets/medias/2026_valence_4.jpeg?v=20260915",
       "assets/medias/2026_valence_5.jpg",
       "assets/medias/2026_valence_6.jpg",
       "assets/medias/2026_valence_7.jpg",

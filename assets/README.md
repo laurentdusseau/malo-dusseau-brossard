@@ -19,3 +19,7 @@ Sans année (sessions) : `entrainement_1.jpg`.
 
 Pour **exclure** une photo de la galerie sans la supprimer : ajouter `_old` dans le nom  
 (ex. `2024_saintgalmier_1_old.jpg`). Le script `scripts/list-gallery-medias.mjs` et `js/site.js` ignorent ces fichiers.
+
+## Originaux haute résolution
+
+Les JPEG web de la galerie sont compressés (~1600 px). Les fichiers appareil photo se conservent dans **`medias-hr/`** (local + Hostinger). Ce dossier n’est pas lu par la galerie ; l’accès HTTP y est refusé (`.htaccess`).
