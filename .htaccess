@@ -1,0 +1,25 @@
+# Malo Dusseau Brossard — Hostinger / LiteSpeed
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# CSS / JS : toujours revalider (évite un vieux cache sur /css/styles.css sans ?v=)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule LiteSpeed>
+  CacheDisable public /css/
+  CacheDisable public /js/
+</IfModule>
+
+# Anciennes pages one-shot → accueil (il ne reste que index + devenir-partenaire)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # ?lang= : variante JS uniquement, pas d'URL indexable (évite doublon GSC)
+  RewriteCond %{QUERY_STRING} (^|&)lang=(fr|en)($|&) [NC]
+  RewriteRule ^ %{REQUEST_URI}? [R=301,L]
+  RewriteRule ^(a-propos|palmares|medias|partenaires|contact)\.html$ / [R=301,L,NC]
+</IfModule>

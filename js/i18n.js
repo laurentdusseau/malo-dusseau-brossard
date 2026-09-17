@@ -1,11 +1,9 @@
 /**
- * FR / EN — IP France → FR, sinon EN. ?lang= seulement après clic FR/EN.
+ * FR / EN — IP France → FR, sinon EN. Préférence persistée en localStorage (pas de ?lang= en URL).
  */
 (function () {
   const STORAGE_KEY = "malo_lang_choice";
   const FR_COUNTRIES = { FR: 1 };
-  let langChosen = false;
-
   const dict = {
     fr: {
       "meta.title": "Malo Dusseau Brossard — Pilote Pumptrack Elite | Champion de France",
@@ -461,16 +459,6 @@
     if (el) el.setAttribute(attr, value);
   }
 
-  function syncUrlLang(lang, show) {
-    try {
-      const url = new URL(window.location.href);
-      if (show) url.searchParams.set("lang", lang);
-      else url.searchParams.delete("lang");
-      const next = url.pathname + url.search + url.hash;
-      window.history.replaceState({}, "", next);
-    } catch (_) {}
-  }
-
   const BIRTH = { y: 2008, m: 11, d: 10 };
 
   function computeAge() {
@@ -496,8 +484,6 @@
   function applyLang(lang, opts) {
     if (!dict[lang]) lang = "fr";
     const persist = !!(opts && opts.persist);
-    const syncUrl = !!(opts && opts.syncUrl);
-    if (syncUrl) langChosen = true;
     document.documentElement.lang = lang;
     if (persist) {
       try {
@@ -540,10 +526,9 @@
     });
 
     document.querySelectorAll("[data-home]").forEach((a) => {
-      a.setAttribute("href", langChosen ? "index.html?lang=" + lang : "index.html");
+      a.setAttribute("href", "index.html");
     });
 
-    syncUrlLang(lang, syncUrl);
     window.__maloLang = lang;
     window.dispatchEvent(new CustomEvent("malo:lang", { detail: { lang } }));
     refreshCountryFlags();
@@ -566,28 +551,23 @@
   function init() {
     document.querySelectorAll(".lang-switch [data-lang]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        applyLang(btn.getAttribute("data-lang"), { persist: true, syncUrl: true });
+        applyLang(btn.getAttribute("data-lang"), { persist: true });
       });
     });
 
-    const urlLang = langFromUrl();
-    if (urlLang) {
-      applyLang(urlLang, { persist: true, syncUrl: true });
-      return;
-    }
     const chosen = savedLang();
     if (chosen) {
-      applyLang(chosen, { persist: true, syncUrl: false });
+      applyLang(chosen, { persist: true });
       return;
     }
 
-    applyLang(fallbackLang(), { persist: false, syncUrl: false });
+    applyLang(fallbackLang(), { persist: false });
     fetchCountry().then((cc) => {
-      if (langFromUrl() || savedLang()) return;
+      if (savedLang()) return;
       if (!cc) return;
       const next = FR_COUNTRIES[cc] ? "fr" : "en";
       if (next !== window.__maloLang) {
-        applyLang(next, { persist: false, syncUrl: false });
+        applyLang(next, { persist: false });
       }
     });
   }
